@@ -14,12 +14,15 @@
                            
 	<!-- 数据源设置 -->
 	<!-- <import resource="classpath:data/spring-data.xml"/> -->
-	<import resource="/WEB-INF/config/datasource/spring-data.xml"/>
+	<import resource="datasource/spring-data.xml"/>
 	
 	<!-- mybatis设置 -->
-	<import resource="/WEB-INF/config/mybatis/spring-mybatis.xml"/>
+	<import resource="mybatis/spring-mybatis.xml"/>
 	
 	<!-- Freemarker设置 -->
-	<import resource="/WEB-INF/config/freemarker/spring-freemarker.xml"/>
+	<import resource="freemarker/spring-freemarker.xml"/>
+	
+	<!-- security设置 -->
+<!-- 	<import resource="security/spring-security.xml"/> -->
 
 </beans>

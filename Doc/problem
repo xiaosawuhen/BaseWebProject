@@ -1,0 +1,12 @@
+jsp, freemarker 多视图
+
+spring security
+	No AuthenticationEntryPoint could be established. 
+	Please make sure you have a login mechanism configured through the namespace (such as form-login) or 
+	specify a custom AuthenticationEntryPoint with the 'entry-point-ref' attribute 
+	xml:
+		<http />
+		<user-service>
+			<user name="user" password="password" authorities="ROLE_USER" />
+		</user-service>
+	解决：使用security4.0

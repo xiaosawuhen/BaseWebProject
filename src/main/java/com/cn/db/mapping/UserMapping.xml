@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.cn.db.dao.UserMapper" >  
+    <select id="selectPersion" parameterType="java.lang.Integer" resultType="com.cn.db.bean.User">  
+        SELECT *
+        FROM persion p
+        WHERE p.id = #{value}
+    </select>  
+    <insert id="insertBatch" parameterType="list">
+    	INSERT INTO 
+    	USER(
+			name,
+			password,
+			age,
+			phone,
+			email
+    		)
+    	VALUES
+    	<foreach collection="list" item="item" separator=",">
+    		(
+				#{item.name},
+				#{item.password},
+				#{item.age},
+				#{item.phone},
+				#{item.email}
+    		)
+    	</foreach>
+    </insert>
+</mapper>  

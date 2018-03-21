@@ -6,13 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.cn.db.dao.PersionMapper;
+import com.cn.db.dao.UserMapper;
 
 @Controller
 public class HelloController {
     
 	@Resource
-	PersionMapper persionMapper; 
+	UserMapper persionMapper; 
 	
     @RequestMapping("/hello")
     public @ResponseBody String hello() {
