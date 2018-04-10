@@ -1,7 +1,6 @@
 <b:beans xmlns="http://www.springframework.org/schema/security"
-		 xmlns:b="http://www.springframework.org/schema/beans"
-		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:b="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
                            http://www.springframework.org/schema/tx
                            http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
@@ -12,30 +11,54 @@
 						   http://www.springframework.org/schema/security 
 						   http://www.springframework.org/schema/security/spring-security-4.0.xsd">
 
-<!-- 	<http /> -->
-<!-- 	<http> -->
-<!-- 		<intercept-url pattern="/**" access="hasRole('ADMIN')" /> -->
-<!-- 		<form-login /> -->
-<!-- 		<logout /> -->
-<!-- 	</http> -->
-	<http pattern="/css/**" security="none"/>
-	<http pattern="/login*" security="none"/>
-	
-	<http use-expressions="false">
+	<!-- <http /> -->
+	<!-- <http> -->
+	<!-- <intercept-url pattern="/**" access="hasRole('ADMIN')" /> -->
+	<!-- <form-login /> -->
+	<!-- <logout /> -->
+	<!-- </http> -->
+	<http pattern="/css/**" security="none" />
+	<http pattern="/login*" security="none" />
+
+	<http auto-config="true" use-expressions="true">
+
+<!-- 		<intercept-url pattern="/login" access="permitAll" /> -->
+<!-- 		<intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')" /> -->
+<!-- 		<intercept-url pattern="/main/common" access="hasRole('ROLE_USER')" /> -->
 		<intercept-url pattern="/**" access="ROLE_ADMIN" />
-		<form-login login-page='/login'/>
+
+		<form-login login-page="/login"
+			authentication-failure-url="/auth/login?error=true"
+			default-target-url="/main/common" />
+
+		<logout invalidate-session="true" logout-success-url="/auth/login"
+			logout-url="/auth/logout" />
+
 	</http>
 
-<!-- 	<user-service> -->
-<!-- 		<user name="user" password="password" authorities="ROLE_USER" /> -->
-<!-- 	</user-service> -->
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-			<user name="user" password="password" authorities="ROLE_USER, ROLE_ADMIN" />
-			<user name="bob" password="bobspassword" authorities="ROLE_USER" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
+<!-- 	<authentication-manager> -->
+<!-- 		<authentication-provider> -->
+<!-- 			<user-service> -->
+<!-- 				<user name="user" password="password" authorities="ROLE_USER, ROLE_ADMIN" /> -->
+<!-- 				<user name="bob" password="bobspassword" authorities="ROLE_USER" /> -->
+<!-- 			</user-service> -->
+<!-- 		</authentication-provider> -->
+<!-- 	</authentication-manager> -->
+	
+	    <!-- 指定一个自定义的authentication-manager :customUserDetailsService -->  
+    <authentication-manager>  
+            <authentication-provider user-service-ref="customUserDetailsService">  
+                    <password-encoder ref="passwordEncoder"/>  
+            </authentication-provider>  
+    </authentication-manager>  
+      
+    <!-- 对密码进行MD5编码 -->  
+    <b:bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>  
+  
+    <!--   
+        通过 customUserDetailsService,Spring会自动的用户的访问级别.  
+        也可以理解成:以后我们和数据库操作就是通过customUserDetailsService来进行关联.  
+     -->  
+    <b:bean id="customUserDetailsService" class="com.lxzl.security.CustomUserDetailsService"/>  
 
 </b:beans>
