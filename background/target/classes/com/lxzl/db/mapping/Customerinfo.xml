@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxzl.db.dao.CustomerinfoMapper" >
+	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Customerinfo">  
+	</select>
+	<select id="selectByAliasName" resultType="com.lxzl.db.bean.Customerinfo">  
+		SELECT  cid AS cid,
+		        alias_name AS aliasName,
+		        password AS password,
+		        phone AS phone,
+		        email AS email 
+			FROM CustomerInfo AS ci
+		 WHERE ci.alias_name = #{aliasName}
+	</select>
+	
+	<insert id="insert" parameterType="com.lxzl.db.bean.Customerinfo">
+	</insert>
+	<insert id="insertBatch" parameterType="list">
+		INSERT INTO
+			USER(
+			name,
+			email
+		)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.name},
+				#{item.email}
+			)
+		</foreach>
+	</insert>
+</mapper>
+

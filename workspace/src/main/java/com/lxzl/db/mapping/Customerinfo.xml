@@ -6,11 +6,11 @@
 	<select id="selectByAliasName" resultType="com.lxzl.db.bean.Customerinfo">  
 		SELECT  cid AS cid,
 		        alias_name AS aliasName,
-		        password AS password,
+		        pwd AS password,
 		        phone AS phone,
 		        email AS email 
 			FROM CustomerInfo AS ci
-		 WHERE ci.alias_name = ${aliasName}
+		 WHERE ci.alias_name = #{aliasName}
 	</select>
 	
 	<insert id="insert" parameterType="com.lxzl.db.bean.Customerinfo">

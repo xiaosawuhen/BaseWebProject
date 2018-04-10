@@ -1,24 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%  
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+%>  
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 <head>
 <title>Login</title>
+<base href="<%=basePath%>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Chattle Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<meta name="keywords" content="r" />
 <!--bootstrap-->
-<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="static/css/bootstrap.css" rel="stylesheet" type="text/css" />
 <!--coustom css-->
-<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link href="static/css/style.css" rel="stylesheet" type="text/css" />
 <!--page css-->
-<link href="/css/page/login.css" rel="stylesheet" type="text/css" />
+<link href="static/css/page/login.css" rel="stylesheet" type="text/css" />
 <!--default-js-->
-<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="static/js/jquery-2.1.4.min.js"></script>
 <!--bootstrap-js-->
-<script src="/js/bootstrap.js"></script>
+<script src="static/js/bootstrap.js"></script>
 
-<script src="/js/responsiveslides.min.js"></script>
+<script src="static/js/responsiveslides.min.js"></script>
 
 <script type="text/javascript">
 
@@ -26,15 +34,15 @@
 </head>
 <body>
 	<header>
-		<img src="/images/login/background.jpg" alt="">	
-		<form class="login-form" action="/j_spring_security_check" role="form" method="POST">
+		<img src="static/images/login/background.jpg" alt="">	
+		<form class="login-form" action="j_spring_security_check" role="form" method="POST">
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"> 
 			<div class="login-title">
 				<div>欢迎您！</div>
 				<div class="login-error">
-					<#if SPRING_SECURITY_LAST_EXCEPTION??>
+					<c:if test="SPRING_SECURITY_LAST_EXCEPTION">
 						${SPRING_SECURITY_LAST_EXCEPTION.message}
-					</#if>
+					</c:if>
 				</div>
 			</div>
 			<div class="form-group username-area" >

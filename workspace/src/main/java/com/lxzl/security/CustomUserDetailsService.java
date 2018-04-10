@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +18,7 @@ import com.lxzl.service.CustomerinfoService;
 
 public class CustomUserDetailsService implements UserDetailsService {
 
+	@Autowired
 	private CustomerinfoService customerinfoService;
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException, DataAccessException {
@@ -30,6 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 					true, getAuthorities(1));
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new UsernameNotFoundException("Error in retrieving user");
 		}
 
