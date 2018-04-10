@@ -27,6 +27,6 @@
 	<import resource="freemarker/spring-freemarker.xml"/>
 	
 	<!-- security设置 -->
-	<import resource="security/spring-security.xml"/>
+<!-- 	<import resource="security/spring-security.xml"/> -->
 
 </beans>
