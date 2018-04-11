@@ -22,7 +22,7 @@ public class Customerlevel implements Serializable {
 	/** 标识. */
 	private Integer level;
 
-	/** �??称. */
+	/** �??称. */
 	private String name;
 
 	/** 创建日期. */
@@ -31,7 +31,7 @@ public class Customerlevel implements Serializable {
 	/** 更新日期. */
 	private Date updateTime;
 
-	/** The set of 用户信�?�表. */
+	/** The set of 用户信�?�表. */
 	private Set<Customerlevelinfo> customerlevelinfoSet;
 
 	/**
@@ -80,19 +80,19 @@ public class Customerlevel implements Serializable {
 	}
 
 	/**
-	 * Set the �??称.
+	 * Set the �??称.
 	 * 
 	 * @param name
-	 *            �??称
+	 *            �??称
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Get the �??称.
+	 * Get the �??称.
 	 * 
-	 * @return �??称
+	 * @return �??称
 	 */
 	public String getName() {
 		return this.name;
@@ -137,29 +137,29 @@ public class Customerlevel implements Serializable {
 	}
 
 	/**
-	 * Set the set of the 用户信�?�表.
+	 * Set the set of the 用户信�?�表.
 	 * 
 	 * @param customerlevelinfoSet
-	 *            The set of 用户信�?�表
+	 *            The set of 用户信�?�表
 	 */
 	public void setCustomerlevelinfoSet(Set<Customerlevelinfo> customerlevelinfoSet) {
 		this.customerlevelinfoSet = customerlevelinfoSet;
 	}
 
 	/**
-	 * Add the 用户信�?�表.
+	 * Add the 用户信�?�表.
 	 * 
 	 * @param customerlevelinfo
-	 *            用户信�?�表
+	 *            用户信�?�表
 	 */
 	public void addCustomerlevelinfo(Customerlevelinfo customerlevelinfo) {
 		this.customerlevelinfoSet.add(customerlevelinfo);
 	}
 
 	/**
-	 * Get the set of the 用户信�?�表.
+	 * Get the set of the 用户信�?�表.
 	 * 
-	 * @return The set of 用户信�?�表
+	 * @return The set of 用户信�?�表
 	 */
 	public Set<Customerlevelinfo> getCustomerlevelinfoSet() {
 		return this.customerlevelinfoSet;

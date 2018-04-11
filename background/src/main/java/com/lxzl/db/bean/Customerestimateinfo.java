@@ -17,7 +17,7 @@ public class Customerestimateinfo implements Serializable {
 	/** ID. */
 	private Long ceiid;
 
-	/** 用户信�?�表. */
+	/** 用户信�?�表. */
 	private Customer customer;
 
 	/** 评价等级表. */
@@ -55,19 +55,19 @@ public class Customerestimateinfo implements Serializable {
 	}
 
 	/**
-	 * Set the 用户信�?�表.
+	 * Set the 用户信�?�表.
 	 * 
 	 * @param customer
-	 *            用户信�?�表
+	 *            用户信�?�表
 	 */
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
 	/**
-	 * Get the 用户信�?�表.
+	 * Get the 用户信�?�表.
 	 * 
-	 * @return 用户信�?�表
+	 * @return 用户信�?�表
 	 */
 	public Customer getCustomer() {
 		return this.customer;

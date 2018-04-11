@@ -159,46 +159,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                                  <form class="form-validate form-horizontal" id="companyForm" method="post" action="company/update">
+                                      <input type="hidden" id="cid" name="cid" value="${company.cid}" >
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">公司名称<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="cname" name="fullname" minlength="5" type="text" required />
+                                              <input class="form-control" id="name" name="name" minlength="5" type="text" required value="${company.name}" />
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="cemail" class="control-label col-lg-2">公司邮件<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="cemail" type="email" name="email" required />
+                                              <input class="form-control " id="mail" type="text" name="mail" required value="${company.mail}" />
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="curl" class="control-label col-lg-2">公司电话</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="tel" type="text" name="tel" />
+                                              <input class="form-control " id="tel" type="text" name="tel" value="${company.tel}"/>
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">公司传真 <span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="fax" name="fax" minlength="5" type="text" required />
+                                              <input class="form-control" id="fax" name="fax" minlength="5" type="text" required value="${company.fax}"/>
                                           </div>
                                       </div>                                      
                                       <div class="form-group ">
                                           <label for="ccomment" class="control-label col-lg-2">公司地址</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="address" type="text" name="address" />
+                                              <input class="form-control " id="address" type="text" name="address" value="${company.address}"/>
                                           </div>
                                       </div>                               
                                       <div class="form-group ">
                                           <label for="ccomment" class="control-label col-lg-2">公司描述</label>
                                           <div class="col-lg-10">
-                                              <textarea class="form-control " id="address" name="address" required ></textarea>
+                                              <textarea class="form-control " id="description" name="description" required >${company.description}</textarea>
                                           </div>
                                       </div>
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
-                                              <button class="btn btn-primary" type="submit">保存</button>
+                                              <button class="btn btn-primary" id="submitBtn" type="submit">保存</button>
 <!--                                               <button class="btn btn-default" type="button">取消</button> -->
                                           </div>
                                       </div>
@@ -213,6 +214,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </section>
       </section>
       <!--main content end-->
+      <!-- 确认消息模态框 -->
+	<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop='static'>
+		<div class="modal-dialog" style="width:500px;">
+			<div class="modal-content">
+				<div class="modal-header" style="font-size:16px; color:#fff; background-color:#0054a6; padding:9px;">
+					<button type="button" class="close" data-dismiss="modal" style="color:#fff; opacity:1;" aria-hidden="true">&times;</button>
+					<div>确认消息</div>
+				</div>
+				<div class="modal-body">
+					<div id="modalInfo" style="text-align:center; margin:10px 0;"></div>
+				</div>
+				<div class="cct-popup-content-bjbz-foot">
+					<button id="okBtn" type="button" style="margin-right:0px;width: 100px;margin-left:260px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">OK</button>
+					<button id="cancleBtn" type="button" style="margin-right:0px;margin-left:10px;width: 100px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
   </section>
   <!-- container section start -->
 
@@ -220,6 +239,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="static/js/jquery.js"></script>
 	<script src="static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="static/js/jquery-1.8.3.min.js"></script>
+    <script src="static/js/jquery.form.js"></script>
     <script type="text/javascript" src="static/js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- bootstrap -->
     <script src="static/js/bootstrap.min.js"></script>
@@ -257,7 +277,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="static/js/charts.js"></script>
 	<script src="static/js/jquery.slimscroll.min.js"></script>
   <script>
+  
+  $(document).ready(function() {
 
+		function modalConfirm(data,callback){
+			$("#confirm #modalInfo").text(data);
+			$("#confirm").modal('show');
+			
+			$("#confirm #okBtn").unbind("click");
+			if( typeof callback != "undefine") {
+				$("#confirm #okBtn").bind("click", callback);
+			}
+		}
+	  jQuery.prototype.serializeObject=function(){  
+	      var obj=new Object();  
+	      $.each(this.serializeArray(),function(index,param){  
+	          if(!(param.name in obj)){  
+	              obj[param.name]=param.value;  
+	          }  
+	      });  
+	      return obj;  
+	  };  
+	  
+      $("#companyForm").on("submit", function(){
+    	  var form = this;
+    	  modalConfirm("是否确认修改信息",function(){
+   		   var dataPara = JSON.stringify($("#companyForm").serializeObject()); 
+   		   $.ajax({
+   		      url : form.action,
+   		      type : form.method,
+   		      data : dataPara,//可能会出现后台接收到的参数值为null的情况，原因是form.js的源码不全，没有data这个参数，需要重新下载官网的源码。
+   		      dataType : "json",
+   		      contentType: "application/json; charset=utf-8",
+   		      async: false,//异步
+                 success: function(msg) {
+                     alert(msg.status);
+                 },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                     alert(XMLHttpRequest.status);
+                     alert(XMLHttpRequest.readyState);
+                     alert(textStatus);
+                 },
+                 complete: function(XMLHttpRequest, textStatus) {
+                	 form; // 调用本次AJAX请求时传递的options参数
+                 }
+   		   });
+    	  })
+        return false;
+      });
+  });
+  
       //knob
       $(function() {
         $(".knob").knob({

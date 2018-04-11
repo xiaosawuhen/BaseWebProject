@@ -22,7 +22,7 @@ public class Employeelevel implements Serializable {
 	/** 级别. */
 	private String level;
 
-	/** �??称. */
+	/** �??称. */
 	private String name;
 
 	/** 创建日期. */
@@ -31,7 +31,7 @@ public class Employeelevel implements Serializable {
 	/** 更新日期. */
 	private Date updateTime;
 
-	/** The set of 员工级别信�?�表. */
+	/** The set of 员工级别信�?�表. */
 	private Set<Employeelevelinfo> employeelevelinfoSet;
 
 	/**
@@ -80,19 +80,19 @@ public class Employeelevel implements Serializable {
 	}
 
 	/**
-	 * Set the �??称.
+	 * Set the �??称.
 	 * 
 	 * @param name
-	 *            �??称
+	 *            �??称
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Get the �??称.
+	 * Get the �??称.
 	 * 
-	 * @return �??称
+	 * @return �??称
 	 */
 	public String getName() {
 		return this.name;
@@ -137,29 +137,29 @@ public class Employeelevel implements Serializable {
 	}
 
 	/**
-	 * Set the set of the 员工级别信�?�表.
+	 * Set the set of the 员工级别信�?�表.
 	 * 
 	 * @param employeelevelinfoSet
-	 *            The set of 员工级别信�?�表
+	 *            The set of 员工级别信�?�表
 	 */
 	public void setEmployeelevelinfoSet(Set<Employeelevelinfo> employeelevelinfoSet) {
 		this.employeelevelinfoSet = employeelevelinfoSet;
 	}
 
 	/**
-	 * Add the 员工级别信�?�表.
+	 * Add the 员工级别信�?�表.
 	 * 
 	 * @param employeelevelinfo
-	 *            员工级别信�?�表
+	 *            员工级别信�?�表
 	 */
 	public void addEmployeelevelinfo(Employeelevelinfo employeelevelinfo) {
 		this.employeelevelinfoSet.add(employeelevelinfo);
 	}
 
 	/**
-	 * Get the set of the 员工级别信�?�表.
+	 * Get the set of the 员工级别信�?�表.
 	 * 
-	 * @return The set of 员工级别信�?�表
+	 * @return The set of 员工级别信�?�表
 	 */
 	public Set<Employeelevelinfo> getEmployeelevelinfoSet() {
 		return this.employeelevelinfoSet;

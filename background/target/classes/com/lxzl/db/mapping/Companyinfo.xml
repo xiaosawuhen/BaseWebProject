@@ -3,7 +3,32 @@
 <mapper namespace="com.lxzl.db.dao.CompanyinfoMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Companyinfo">  
 	</select>
-	<insert id="insert" parameterType="com.lxzl.db.bean.Companyinfo">
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.CompanyBean">
+		UPDATE companyinfo
+		   SET address = #{address},
+		   	   tel = #{tel},
+		   	   fax = #{fax},
+		   	   mail = #{mail},
+		   	   update_time = now()
+		 WHERE cid = #{cid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.CompanyBean">
+		INSERT INTO
+			companyinfo(
+				cid,
+				address,
+				tel,
+				fax,
+				mail,
+				create_time
+			) VALUES (
+				#{cid},
+				#{address},
+				#{tel},
+				#{fax},
+				#{mail},
+				now()
+			)
 	</insert>
 	<insert id="insertBatch" parameterType="list">
 		INSERT INTO

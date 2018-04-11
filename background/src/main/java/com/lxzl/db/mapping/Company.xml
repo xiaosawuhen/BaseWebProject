@@ -3,7 +3,52 @@
 <mapper namespace="com.lxzl.db.dao.CompanyMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Company">  
 	</select>
-	<insert id="insert" parameterType="com.lxzl.db.bean.Company">
+	
+	<select id="getInfoByName" resultType="com.lxzl.db.transfor.bean.CompanyBean">  
+		SELECT c.`name` AS name,
+					 c.description AS description,
+					 ci.address AS address,
+					 ci.fax AS fax,
+					 ci.mail AS mail,
+					 ci.tel AS tel
+		  FROM company c
+		  LEFT JOIN companyinfo ci
+		         ON ci.cid = c.cid
+     	 WHERE c.`name` = #{name}
+	</select>
+	
+	<select id="selectById" resultType="com.lxzl.db.transfor.bean.CompanyBean">  
+		SELECT c.`name` AS name,
+					c.cid AS cid,
+					 c.description AS description,
+					 ci.address AS address,
+					 ci.fax AS fax,
+					 ci.mail AS mail,
+					 ci.tel AS tel
+		  FROM company c
+		  LEFT JOIN companyinfo ci
+		         ON ci.cid = c.cid
+     	 WHERE c.cid = #{id}
+	</select>
+	
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.CompanyBean">
+		UPDATE company
+		   SET `name` = #{name},
+		   	   description = #{description},
+		   	   update_time = now()
+		 WHERE cid = #{cid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.CompanyBean" useGeneratedKeys="true" keyProperty="cid">
+		INSERT INTO
+			company(
+				name,
+				description,
+				create_time
+			) VALUES (
+				#{name},
+				#{description},
+				now()
+			)
 	</insert>
 	<insert id="insertBatch" parameterType="list">
 		INSERT INTO

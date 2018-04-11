@@ -1,16 +1,41 @@
 package com.lxzl.controller.company;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.lxzl.db.bean.Company;
+import com.lxzl.db.transfor.bean.CompanyBean;
+import com.lxzl.service.CompanyService;
 
 @Controller
 @RequestMapping("/company")
 public class CompanyController {
+	
+	@Autowired
+	private CompanyService companyService;
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateInfo(@RequestBody CompanyBean company, HttpServletRequest request) {
+		
+		Integer cnt = companyService.updateById(company);
+		
+		return "{\"status\":\"success\"}";
+	}
 
-	@RequestMapping("credential")
+	@RequestMapping("/credential")
 	public ModelAndView credential(){
 		ModelAndView mv = new ModelAndView();
+		
+		String name = "";
+		CompanyBean company = companyService.getInfoByName(name);
+		mv.addObject("company", company);
 		
 		mv.setViewName("company/credential");
 		return mv;

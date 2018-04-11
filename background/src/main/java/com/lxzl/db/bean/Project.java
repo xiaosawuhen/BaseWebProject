@@ -19,13 +19,13 @@ public class Project implements Serializable {
 	/** PID. */
 	private Long pid;
 
-	/** 公�?�. */
+	/** 公�?�. */
 	private Company company;
 
-	/** �??称. */
+	/** �??称. */
 	private String name;
 
-	/** �??述. */
+	/** �??述. */
 	private String description;
 
 	/** 创建日期. */
@@ -34,10 +34,10 @@ public class Project implements Serializable {
 	/** 更新日期. */
 	private Date updateTime;
 
-	/** The set of 项目�?�工信�?�表. */
+	/** The set of 项目�?�工信�?�表. */
 	private Set<Projectemployeeinfo> projectemployeeinfoSet;
 
-	/** The set of 项目�??称. */
+	/** The set of 项目�??称. */
 	private Set<Projectinfo> projectinfoSet;
 
 	/**
@@ -68,57 +68,57 @@ public class Project implements Serializable {
 	}
 
 	/**
-	 * Set the 公�?�.
+	 * Set the 公�?�.
 	 * 
 	 * @param company
-	 *            公�?�
+	 *            公�?�
 	 */
 	public void setCompany(Company company) {
 		this.company = company;
 	}
 
 	/**
-	 * Get the 公�?�.
+	 * Get the 公�?�.
 	 * 
-	 * @return 公�?�
+	 * @return 公�?�
 	 */
 	public Company getCompany() {
 		return this.company;
 	}
 
 	/**
-	 * Set the �??称.
+	 * Set the �??称.
 	 * 
 	 * @param name
-	 *            �??称
+	 *            �??称
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/**
-	 * Get the �??称.
+	 * Get the �??称.
 	 * 
-	 * @return �??称
+	 * @return �??称
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * Set the �??述.
+	 * Set the �??述.
 	 * 
 	 * @param description
-	 *            �??述
+	 *            �??述
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
 	/**
-	 * Get the �??述.
+	 * Get the �??述.
 	 * 
-	 * @return �??述
+	 * @return �??述
 	 */
 	public String getDescription() {
 		return this.description;
@@ -163,58 +163,58 @@ public class Project implements Serializable {
 	}
 
 	/**
-	 * Set the set of the 项目�?�工信�?�表.
+	 * Set the set of the 项目�?�工信�?�表.
 	 * 
 	 * @param projectemployeeinfoSet
-	 *            The set of 项目�?�工信�?�表
+	 *            The set of 项目�?�工信�?�表
 	 */
 	public void setProjectemployeeinfoSet(Set<Projectemployeeinfo> projectemployeeinfoSet) {
 		this.projectemployeeinfoSet = projectemployeeinfoSet;
 	}
 
 	/**
-	 * Add the 项目�?�工信�?�表.
+	 * Add the 项目�?�工信�?�表.
 	 * 
 	 * @param projectemployeeinfo
-	 *            项目�?�工信�?�表
+	 *            项目�?�工信�?�表
 	 */
 	public void addProjectemployeeinfo(Projectemployeeinfo projectemployeeinfo) {
 		this.projectemployeeinfoSet.add(projectemployeeinfo);
 	}
 
 	/**
-	 * Get the set of the 项目�?�工信�?�表.
+	 * Get the set of the 项目�?�工信�?�表.
 	 * 
-	 * @return The set of 项目�?�工信�?�表
+	 * @return The set of 项目�?�工信�?�表
 	 */
 	public Set<Projectemployeeinfo> getProjectemployeeinfoSet() {
 		return this.projectemployeeinfoSet;
 	}
 
 	/**
-	 * Set the set of the 项目�??称.
+	 * Set the set of the 项目�??称.
 	 * 
 	 * @param projectinfoSet
-	 *            The set of 项目�??称
+	 *            The set of 项目�??称
 	 */
 	public void setProjectinfoSet(Set<Projectinfo> projectinfoSet) {
 		this.projectinfoSet = projectinfoSet;
 	}
 
 	/**
-	 * Add the 项目�??称.
+	 * Add the 项目�??称.
 	 * 
 	 * @param projectinfo
-	 *            项目�??称
+	 *            项目�??称
 	 */
 	public void addProjectinfo(Projectinfo projectinfo) {
 		this.projectinfoSet.add(projectinfo);
 	}
 
 	/**
-	 * Get the set of the 项目�??称.
+	 * Get the set of the 项目�??称.
 	 * 
-	 * @return The set of 项目�??称
+	 * @return The set of 项目�??称
 	 */
 	public Set<Projectinfo> getProjectinfoSet() {
 		return this.projectinfoSet;
