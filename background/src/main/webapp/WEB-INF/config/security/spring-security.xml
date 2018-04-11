@@ -38,8 +38,8 @@
 			authentication-success-handler-ref="authenticationSuccessHandler" 
 			authentication-failure-handler-ref="authenticationFailedHandler"/>
 
-		<logout invalidate-session="true" logout-success-url="/logout"
-			logout-url="/login" />
+		<logout invalidate-session="true" logout-success-url="/login"
+			logout-url="/logout" />
 
 	</http>
 

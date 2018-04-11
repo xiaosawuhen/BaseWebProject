@@ -23,7 +23,7 @@ public class HomePageController {
 		CompanyBean company = companyService.selectById(id);
 		mv.addObject("company", company);
 		
-		mv.setViewName("index");
+		mv.setViewName("company/index");
 		return mv;
 	}
 	

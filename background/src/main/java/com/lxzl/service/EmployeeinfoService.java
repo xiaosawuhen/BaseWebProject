@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.lxzl.db.bean.Employeeinfo;
+import com.lxzl.db.transfor.bean.EmployeeBean;
 
 public interface EmployeeinfoService {
 
-	Integer insertBatch(List<Employeeinfo> list);
+	Integer insertBatch(List<EmployeeBean> list);
 
-	Integer insert(Employeeinfo employeeinfo);
+	Integer insert(EmployeeBean employeeinfo);
 
 	List<Employeeinfo> select(Map<String, String> map);
 

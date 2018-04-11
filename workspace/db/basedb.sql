@@ -4,6 +4,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS CompanyEmployeeInfo;
 DROP TABLE IF EXISTS CompanyInfo;
+DROP TABLE IF EXISTS Credential;
 DROP TABLE IF EXISTS CustomerCompanyInfo;
 DROP TABLE IF EXISTS ProjectEmployeeInfo;
 DROP TABLE IF EXISTS ProjectInfo;
@@ -69,6 +70,23 @@ CREATE TABLE CompanyInfo
 	create_time datetime COMMENT '创建日期',
 	update_time datetime,
 	PRIMARY KEY (ciid)
+);
+
+
+CREATE TABLE Credential
+(
+	crid bigint NOT NULL AUTO_INCREMENT,
+	-- 公司的唯一标识
+	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	-- 证书名称
+	name varchar(50) COMMENT '证书名称',
+	img_url varchar(50),
+	description text,
+	end_date date,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (crid)
 );
 
 
@@ -140,7 +158,7 @@ CREATE TABLE CustomerInfo
 	-- 别名
 	alias_name varchar(20) COMMENT '别名',
 	-- 密码
-	password varchar(20) COMMENT '密码',
+	pwd varchar(20) COMMENT '密码',
 	-- 手机号
 	phone varchar(20) COMMENT '手机号',
 	email varchar(50),
@@ -204,11 +222,11 @@ CREATE TABLE EmployeeInfo
 	-- 员工ID
 	eiid bigint NOT NULL AUTO_INCREMENT COMMENT '员工ID',
 	-- 职工唯一标识
-	edi bigint NOT NULL COMMENT '职工唯一标识',
+	eid bigint NOT NULL COMMENT '职工唯一标识',
 	-- 员工别名
 	alias_name varchar(20) COMMENT '员工别名',
 	-- 员工密码
-	password varchar(20) COMMENT '员工密码',
+	pwd varchar(20) COMMENT '员工密码',
 	-- 员工手机号
 	phone varchar(20) COMMENT '员工手机号',
 	-- 员工邮箱

@@ -19,9 +19,6 @@ public class Project implements Serializable {
 	/** PID. */
 	private Long pid;
 
-	/** 公�?�. */
-	private Company company;
-
 	/** �??称. */
 	private String name;
 
@@ -65,25 +62,6 @@ public class Project implements Serializable {
 	 */
 	public Long getPid() {
 		return this.pid;
-	}
-
-	/**
-	 * Set the 公�?�.
-	 * 
-	 * @param company
-	 *            公�?�
-	 */
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
-	/**
-	 * Get the 公�?�.
-	 * 
-	 * @return 公�?�
-	 */
-	public Company getCompany() {
-		return this.company;
 	}
 
 	/**

@@ -43,6 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="static/css/style-responsive.css" rel="stylesheet" />
 	<link href="static/css/xcharts.min.css" rel=" stylesheet">	
 	<link href="static/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	
+    <link rel="stylesheet" href="static/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="static/css/buttons.dataTables.min.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="static/js/html5shiv.js"></script>
@@ -55,97 +58,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- container section start -->
   <section id="container" class="">
      
-      
-      <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
-
-            <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
-            <!--logo end-->
-
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="static/img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="logout"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
-
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="index.html">
-                          <i class="icon_house_alt"></i>
-                          <span>公司基本信息</span>
-                      </a>
-                  </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>公司信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="company/credential">公司证书</a></li>                          
-                      </ul>
-                  </li>    
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>员工信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="employee/list">员工查询</a></li>                          
-                          <li><a class="" href="employee/add">员工添加</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>项目信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="project/list">项目查询</a></li>
-                          <li><a class="" href="project/add">项目添加</a></li>
-                      </ul>
-                  </li>  
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+      <!-- headerjsp -->
+      <c:import url="../common/header.jsp"></c:import>
+      <c:import url="../common/menu.jsp"></c:import>
       
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
 		  <div class="row">
 				<div class="col-lg-12">
-					<h3 class="page-header"><i class="fa fa-files-o"></i> 公司信息管理</h3>
+					<h3 class="page-header"><i class="fa fa-files-o"></i> 员工信息管理</h3>
 					<ol class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="index.html">后台管理</a></li>
 						<li><i class="fa fa-laptop"></i>员工信息管理</li>
@@ -160,11 +82,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                              删选条件
                           </header>
                           <div class="panel-body">
-                              <form class="form-horizontal " method="get">
+                              <form id="selectContidionForm" class="form-horizontal " method="post">
                                   <div class="form-group">
                                       <label class="col-sm-1 control-label">姓名</label>
                                       <div class="col-sm-2">
-                                          <input type="text" class="form-control">
+                                          <input type="text" class="form-control" id="nameCon" name="nameCon">
                                       </div>
                                   </div>
                                   <button type="submit" class="btn btn-primary">查询</button>
@@ -180,47 +102,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               员工列表
                           </header>
                           <div class="table-responsive">
-                            <table class="table">
+                            <table id="employeeTable" class="table">
                               <thead>
                                 <tr>
                                   <th>#</th>
-                                  <th>Table heading</th>
-                                  <th>Table heading</th>
-                                  <th>Table heading</th>
-                                  <th>Table heading</th>
-                                  <th>Table heading</th>
-                                  <th>Table heading</th>
+                                  <th>ID</th>
+                                  <th>姓名</th>
+                                  <th>性别</th>
+                                  <th>电话</th>
+                                  <th>邮箱</th>
+                                  <th>账号</th>
+                                  <th>删除</th>
                                 </tr>
                               </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                  <td>Table cell</td>
-                                </tr>
-                              </tbody>
                             </table>
                           </div>
 
@@ -274,8 +168,97 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="static/js/sparklines.js"></script>	
 	<script src="static/js/charts.js"></script>
 	<script src="static/js/jquery.slimscroll.min.js"></script>
+
+    <!-- 导入jquery支持 -->
+	<script type="text/javascript" src="static/js/dataTable/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="static/js/dataTable/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" src="static/js/dataTable/buttons.colVis.min.js"></script>
   <script>
 
+	$(document).ready(function() {
+		//var vdata = [];
+	    var employeeTable = $('#employeeTable').DataTable( {
+	        dom: 'Bfrtip',    // 动态控制显示列按钮
+	        searching:false,
+	        info:false,
+	        paging:false,
+	        autoWidth:false,
+	        buttons: [
+	        	{ extend: 'colvis', text: '个性化界面' },
+              {
+	        		extend: 'collection',
+                  text: '全显示',
+	                autoClose: true,
+                  action: function ( e, dt, node, config ) {
+                      dt.columns().visible( true );
+                  }
+              }
+	        ]
+	    } );
+	    
+	    var searchList = function(info) {
+   		   $.ajax({
+   		      url : "employee/listByCondition",
+   		      type : "post",
+   		      data : JSON.stringify(info),//可能会出现后台接收到的参数值为null的情况，原因是form.js的源码不全，没有data这个参数，需要重新下载官网的源码。
+   		      dataType : "json",
+   		      contentType: "application/json; charset=utf-8",
+   		      async: false,//异步
+                 success: function(data) {
+                	if(data.statusCode = '20000') {
+        		    	var dataList = data.data;
+        		    	// 遍历循环写tbody
+        		    	var tableData = new Array(dataList.length);
+        		    	
+                		$.each(dataList, function(i, item){
+                			var arrary = new Array(7);
+                			arrary[0] = (i);
+                			arrary[1] = ((dataList[i].eid!=null)?dataList[i].eid:"");
+
+                  			var name = ((dataList[i].name!=null)?dataList[i].name:"");
+    		    			var nameHtml = "<span ";
+    		    			nameHtml += "eid='"+dataList[i].eid+"' >";
+    		    			nameHtml += "<a class=\"employee-name\" href='javascript:void(0);' onclick='detailIfno(this)'";
+    		    			nameHtml += ">"+name+"</a></span>";
+                  			arrary[2] = nameHtml;
+                			arrary[3] = ((dataList[i].sex!=null)?dataList[i].sex:"");
+                			arrary[4] = ((dataList[i].phone!=null)?dataList[i].phone:"");
+                			arrary[5] = ((dataList[i].email!=null)?dataList[i].email:"");
+                			arrary[6] = ((dataList[i].aliasName!=null)?dataList[i].aliasName:"");
+    		    			var actionHtml = "<span ";
+    		    			actionHtml += "eid='"+dataList[i].eid+"' >";
+    		    			actionHtml += "<a class=\"btn btn-danger\" href=\"javascript:void(0);\" onclick='deleteIfno(this)'><i class=\"icon_close_alt2\"></i></a></span>";
+                			arrary[7] = actionHtml;
+                			
+                			tableData[i] = arrary;
+                		});
+                		employeeTable = $("#employeeTable").dataTable();   
+             	        oSettings = employeeTable.fnSettings(); 
+            	        employeeTable.fnClearTable(this);
+            	        employeeTable.fnAddData(tableData);
+            	        oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();  
+            	        employeeTable.fnDraw(); 
+                	}
+                 },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                 },
+                 complete: function(XMLHttpRequest, textStatus) {
+                 }
+   		   });
+	    }
+
+    	var info = {};
+    	info.name = '123';
+   		searchList(info);
+
+        $("#selectContidionForm").on("submit", function(){
+        	var info = {};
+        	info.name = $("#nameCon").val();
+       		searchList(info);
+          return false;
+        });
+	} );
+	
       //knob
       $(function() {
         $(".knob").knob({
@@ -321,6 +304,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	});
 
 
+	function detailIfno(which){
+		var eid = $(which).parent().attr("eid");
+		window.location.href = "employee/edit?eid=" + eid;
+	}
+	
+	function deleteIfno(which){
+	  var eid = $(which).parent().attr("eid");
+  	  modalConfirm("是否确认删除信息",function(){
+  		   var info = {};
+  		   info.eid = eid;
+  		   $.ajax({
+  		      url : "employee/delete",
+  		      type : "post",
+  		      data : JSON.stringify(info),//可能会出现后台接收到的参数值为null的情况，原因是form.js的源码不全，没有data这个参数，需要重新下载官网的源码。
+  		      dataType : "json",
+  		      contentType: "application/json; charset=utf-8",
+  		      async: false,//异步
+  	             success: function(data) {
+  	            	if(data.statusCode = '20000') {
+  	            		alert("删除成功");
+	  	              	var infos = {};
+	  	              	infos.name = '123';
+  	             		searchList(infos);
+  	            	}
+  	             },
+  	             error: function(XMLHttpRequest, textStatus, errorThrown) {
+  	             },
+  	             complete: function(XMLHttpRequest, textStatus) {
+  	             }
+  		   }); 
+  	  });
+	}
 
   </script>
 

@@ -17,8 +17,8 @@ public class Projectinfo implements Serializable {
 	/** PIID. */
 	private Long piid;
 
-	/** 项目表. */
-	private Project project;
+	/** PIID. */
+	private Long pid;
 
 	/** 开始时间. */
 	private Date startTime;
@@ -58,22 +58,17 @@ public class Projectinfo implements Serializable {
 	}
 
 	/**
-	 * Set the 项目表.
-	 * 
-	 * @param project
-	 *            项目表
+	 * @return the pid
 	 */
-	public void setProject(Project project) {
-		this.project = project;
+	public Long getPid() {
+		return pid;
 	}
 
 	/**
-	 * Get the 项目表.
-	 * 
-	 * @return 项目表
+	 * @param pid the pid to set
 	 */
-	public Project getProject() {
-		return this.project;
+	public void setPid(Long pid) {
+		this.pid = pid;
 	}
 
 	/**

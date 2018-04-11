@@ -54,90 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <!-- container section start -->
   <section id="container" class="">
-      <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
+      <!-- headerjsp -->
+      <c:import url="../common/header.jsp"></c:import>
+      <c:import url="../common/menu.jsp"></c:import>
 
-            <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
-            <!--logo end-->
-
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="static/img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="logout"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
-
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="index">
-                          <i class="icon_house_alt"></i>
-                          <span>公司基本信息</span>
-                      </a>
-                  </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>公司信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="company/credential">公司证书</a></li>                          
-                      </ul>
-                  </li>    
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>员工信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="employee/list">员工查询</a></li>                          
-                          <li><a class="" href="employee/add">员工添加</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>项目信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="project/list">项目查询</a></li>
-                          <li><a class="" href="project/add">项目添加</a></li>
-                      </ul>
-                  </li>  
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      
       <!--main content start-->
       <section id="main-content">
           <section class="wrapper">
@@ -279,26 +199,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script>
   
   $(document).ready(function() {
-
-		function modalConfirm(data,callback){
-			$("#confirm #modalInfo").text(data);
-			$("#confirm").modal('show');
-			
-			$("#confirm #okBtn").unbind("click");
-			if( typeof callback != "undefine") {
-				$("#confirm #okBtn").bind("click", callback);
-			}
-		}
-	  jQuery.prototype.serializeObject=function(){  
-	      var obj=new Object();  
-	      $.each(this.serializeArray(),function(index,param){  
-	          if(!(param.name in obj)){  
-	              obj[param.name]=param.value;  
-	          }  
-	      });  
-	      return obj;  
-	  };  
-	  
       $("#companyForm").on("submit", function(){
     	  var form = this;
     	  modalConfirm("是否确认修改信息",function(){

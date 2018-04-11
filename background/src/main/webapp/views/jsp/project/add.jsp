@@ -55,90 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <!-- container section start -->
   <section id="container" class="">
      
-      
-      <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
-
-            <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
-            <!--logo end-->
-
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="static/img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="logout"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
-
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="index.html">
-                          <i class="icon_house_alt"></i>
-                          <span>公司基本信息</span>
-                      </a>
-                  </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>公司信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="company/credential">公司证书</a></li>                          
-                      </ul>
-                  </li>    
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>员工信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="employee/list">员工查询</a></li>                          
-                          <li><a class="" href="employee/add">员工添加</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>项目信息管理</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="project/list">项目查询</a></li>
-                          <li><a class="" href="project/add">项目添加</a></li>
-                      </ul>
-                  </li>  
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+      <!-- headerjsp -->
+      <c:import url="../common/header.jsp"></c:import>
+      <c:import url="../common/menu.jsp"></c:import>
       
       <!--main content start-->
       <section id="main-content">
@@ -161,41 +80,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
+                                  <form class="form-validate form-horizontal" id="projectForm" method="post" action="project/add/submit">
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">公司名称<span class="required">*</span></label>
+                                          <label for="cname" class="control-label col-lg-2">项目名称<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="cname" name="fullname" minlength="5" type="text" required />
+                                              <input class="form-control" id="name" name="name" minlength="5" type="text" required />
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="cemail" class="control-label col-lg-2">公司邮件<span class="required">*</span></label>
+                                          <label for="cemail" class="control-label col-lg-2">开始时间<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="cemail" type="email" name="email" required />
+                                              <input class="form-control " id="startTime" type="email" name="startTime" required />
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="curl" class="control-label col-lg-2">公司电话</label>
+                                          <label for="curl" class="control-label col-lg-2">结束时间</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="tel" type="text" name="tel" />
+                                              <input class="form-control " id="endTime" type="text" name="endTime"/>
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">公司传真 <span class="required">*</span></label>
+                                          <label for="ccomment" class="control-label col-lg-2">项目描述</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="fax" name="fax" minlength="5" type="text" required />
-                                          </div>
-                                      </div>                                      
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">公司地址</label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="address" type="text" name="address" />
-                                          </div>
-                                      </div>                               
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">公司描述</label>
-                                          <div class="col-lg-10">
-                                              <textarea class="form-control " id="address" name="address" required ></textarea>
+                                              <textarea class="form-control " id="description" name="description" required ></textarea>
                                           </div>
                                       </div>
                                       <div class="form-group">
@@ -215,6 +122,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </section>
       </section>
       <!--main content end-->
+      <!-- 确认消息模态框 -->
+	<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop='static'>
+		<div class="modal-dialog" style="width:500px;">
+			<div class="modal-content">
+				<div class="modal-header" style="font-size:16px; color:#fff; background-color:#0054a6; padding:9px;">
+					<button type="button" class="close" data-dismiss="modal" style="color:#fff; opacity:1;" aria-hidden="true">&times;</button>
+					<div>确认消息</div>
+				</div>
+				<div class="modal-body">
+					<div id="modalInfo" style="text-align:center; margin:10px 0;"></div>
+				</div>
+				<div class="cct-popup-content-bjbz-foot">
+					<button id="okBtn" type="button" style="margin-right:0px;width: 100px;margin-left:260px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">OK</button>
+					<button id="cancleBtn" type="button" style="margin-right:0px;margin-left:10px;width: 100px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
   </section>
   <!-- container section start -->
 
@@ -260,6 +185,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script src="static/js/jquery.slimscroll.min.js"></script>
   <script>
 
+  $(document).ready(function() {
+      $("#projectForm").on("submit", function(){
+    	  var form = this;
+    	  modalConfirm("是否确认修改信息",function(){
+   		   var dataPara = JSON.stringify($("#projectForm").serializeObject()); 
+   		   $.ajax({
+   		      url : form.action,
+   		      type : form.method,
+   		      data : dataPara,//可能会出现后台接收到的参数值为null的情况，原因是form.js的源码不全，没有data这个参数，需要重新下载官网的源码。
+   		      dataType : "json",
+   		      contentType: "application/json; charset=utf-8",
+   		      async: false,//异步
+                 success: function(msg) {
+                     alert(msg.status);
+                 },
+                 error: function(XMLHttpRequest, textStatus, errorThrown) {
+                     alert(XMLHttpRequest.status);
+                     alert(XMLHttpRequest.readyState);
+                     alert(textStatus);
+                 },
+                 complete: function(XMLHttpRequest, textStatus) {
+                	 form; // 调用本次AJAX请求时传递的options参数
+                 }
+   		   });
+    	  })
+        return false;
+      });
+  });
       //knob
       $(function() {
         $(".knob").knob({
