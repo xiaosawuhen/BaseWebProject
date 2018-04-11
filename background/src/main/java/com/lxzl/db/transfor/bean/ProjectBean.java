@@ -21,6 +21,8 @@ public class ProjectBean implements Serializable {
 	/** �??述. */
 	private String description;
 
+	private String imgUrl;
+	
 	/** 开始时间. */
 	private Date startTime;
 	
@@ -43,6 +45,20 @@ public class ProjectBean implements Serializable {
 	 */
 	public void setPid(Long pid) {
 		this.pid = pid;
+	}
+
+	/**
+	 * @return the imgUrl
+	 */
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	/**
+	 * @param imgUrl the imgUrl to set
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	/**

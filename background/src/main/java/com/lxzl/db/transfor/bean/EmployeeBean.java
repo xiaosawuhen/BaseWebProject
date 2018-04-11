@@ -25,6 +25,11 @@ public class EmployeeBean implements Serializable {
 
 	/** 邮箱. */
 	private String email;
+	
+	/**
+	 * 图片路径
+	 */
+	private String imgUrl;
 
 	/** 姓�??. */
 	private String name;
@@ -47,6 +52,20 @@ public class EmployeeBean implements Serializable {
 	 */
 	public void setEid(Long eid) {
 		this.eid = eid;
+	}
+
+	/**
+	 * @return the imgUrl
+	 */
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	/**
+	 * @param imgUrl the imgUrl to set
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	/**

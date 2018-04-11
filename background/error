@@ -1,18 +1,36 @@
 java.lang.ClassNotFoundException: org.springframework.http.converter.AbstractGenericHttpMessageConverter
 spring web 版本4.3.12
 
+================================================================================
 reemarker.template.Configuration.<init>(Lfreemarker/template/Version;)V
 更新maven 重新编译
 
+================================================================================
 415 Unsupported Media Type
 
+================================================================================
 form to json
 
+================================================================================
 Invalid character found in the request target. The valid characters are defined in RFC 7230 and RFC 3986
 刷新工程，使用requestBody，responseBody
 
+================================================================================
 WARNING: Failed to read HTTP message: org.springframework.http.converter.HttpMessageNotReadableException: 
 JSON parse error: Can not deserialize instance of java.lang.Integer out of START_OBJECT token; 
 nested exception is com.fasterxml.jackson.databind.JsonMappingException: Can not deserialize instance of java.lang.Integer out of START_OBJECT token
  at [Source: java.io.PushbackInputStream@3ea65dc6; line: 1, column: 1]
 Java侧接收Json值，使用RequestBody时，只能是String或Bean
+
+================================================================================
+fonts.googleapis.com/css
+
+==================
+Refused to display 'http://localhost:8888/lxzlbackground/employee/upload' in a frame because it set 'X-Frame-Options' to 'deny'.
+response.setHeader("X-Frame-Options", "SAMEORIGIN");// 解决IFrame拒绝的问题 
+============================
+spring security interceptor
+密码错误
+
+===========================
+图片Ajax上传

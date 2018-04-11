@@ -61,25 +61,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 	</div>
     <script src="static/js/jquery.js"></script>
-	<script>
-		function modalConfirm(data,callback){
-			$("#confirm #modalInfo").text(data);
-			$("#confirm").modal('show');
-			
-			$("#confirm #okBtn").unbind("click");
-			if( typeof callback != "undefine") {
-				$("#confirm #okBtn").bind("click", callback);
-			}
-		}
-		$(document).ready(function() {
-			jQuery.prototype.serializeObject=function(){  
-			    var obj=new Object();  
-			    $.each(this.serializeArray(),function(index,param){  
-			        if(!(param.name in obj)){  
-			            obj[param.name]=param.value;  
-			        }  
-			    });  
-			    return obj;  
-			};  
-		});
-	 </script>
+    <script src="static/js/ajaxfileupload.js"></script>
+    <script src="static/js/user/userScript.js"></script>

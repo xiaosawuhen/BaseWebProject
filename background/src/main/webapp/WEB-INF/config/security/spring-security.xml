@@ -22,12 +22,15 @@
 
 	<http auto-config="true" use-expressions="true">
 
-		<!-- <intercept-url pattern="/login" access="permitAll" /> -->
+		<intercept-url pattern="/login" access="permitAll" />
 		<!-- <intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')" 
 			/> -->
 		<!-- <intercept-url pattern="/main/common" access="hasRole('ROLE_USER')" 
 			/> -->
-		<intercept-url pattern="/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/company/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/employee/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/project/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/index" access="hasRole('ROLE_ADMIN')" />
 
 		<csrf disabled="true" token-repository-ref="cookieCsrfTokenRepository" />
 

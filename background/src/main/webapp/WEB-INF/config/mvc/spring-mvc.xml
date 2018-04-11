@@ -48,6 +48,16 @@
 		<property name="order" value="1" />
 	</bean>
 	<!--视图解释器 结束 -->
+	<mvc:interceptors>  
+	    <!-- 使用 bean 定义一个 Interceptor，直接定义在 mvc:interceptors 下面的 Interceptor 将拦截所有的请求 -->  
+<!-- 	    <bean class="com.lxzl.intercptor.HttpHeaderInterceptor"/>   -->
+	  	<mvc:interceptor>
+	  		<mvc:mapping path="/**/*"/>
+	  		<mvc:exclude-mapping path="/static/*"/>
+<!-- 	        定义在 mvc:interceptor 下面的 Interceptor，表示对特定的请求进行拦截   -->
+	  		<bean class="com.lxzl.intercptor.HttpHeaderInterceptor"/>
+	  	</mvc:interceptor>
+	</mvc:interceptors>  
 
 	<!-- 上传文件配置 -->
 	<bean id="multipartResolver"

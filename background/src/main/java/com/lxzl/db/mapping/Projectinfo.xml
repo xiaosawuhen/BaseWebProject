@@ -6,6 +6,7 @@
 	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.ProjectBean">
 		UPDATE projectinfo
 		   SET start_time = #{startTime},
+			   img_url = #{imgUrl},
 		       end_time = #{endTime},
 		   	   update_time = now()
 		 WHERE pid = #{pid}
@@ -14,11 +15,13 @@
 		INSERT INTO
 			projectinfo(
 				pid,
+				img_url,
 				start_time,
 				end_time,
 				create_time
 			) VALUES (
 				#{pid},
+				#{imgUrl},
 				#{startTime},
 				#{endTime},
 				now()

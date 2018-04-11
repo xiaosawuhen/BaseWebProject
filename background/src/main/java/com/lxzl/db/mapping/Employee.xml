@@ -9,6 +9,7 @@
 					e.`name` AS name,
 					e.sex AS sex,
 					e.age AS age,
+					ei.img_url AS imgUrl,
 					ei.alias_name AS aliasName,
 					ei.email AS email,
 					ei.phone AS phone
@@ -23,6 +24,7 @@
 					e.`name` AS name,
 					e.sex AS sex,
 					e.age AS age,
+					ei.img_url AS imgUrl,
 					ei.alias_name AS aliasName,
 					ei.email AS email,
 					ei.phone AS phone
