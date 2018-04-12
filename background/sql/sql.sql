@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-04-12 13:29:06
+Date: 2018-04-12 17:39:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `company` (
 -- ----------------------------
 -- Records of company
 -- ----------------------------
-INSERT INTO `company` VALUES ('18', 'new11', 'new1111122', '2018-04-11 11:27:30', '2018-04-11 11:56:44');
+INSERT INTO `company` VALUES ('18', '炼心之旅公司', '本公司是测试公司，哈哈', '2018-04-11 11:27:30', '2018-04-12 17:14:46');
 
 -- ----------------------------
 -- Table structure for companyemployeeinfo
@@ -80,7 +80,7 @@ CREATE TABLE `companyinfo` (
 -- ----------------------------
 -- Records of companyinfo
 -- ----------------------------
-INSERT INTO `companyinfo` VALUES ('17', '18', '公司信息管理', '公司信息管理', '公司信息管理', '公司信息管理', '2018-04-11 11:27:30', '2018-04-11 11:56:44');
+INSERT INTO `companyinfo` VALUES ('17', '18', '辽宁省大连市旅顺口区龙王塘街道，龙王塘壹号小区，一号楼2202', '0411-1234567', '0411-1234567', 'xiaosawuhen@hotmail.com', '2018-04-11 11:27:30', '2018-04-12 17:14:46');
 
 -- ----------------------------
 -- Table structure for credential
@@ -365,6 +365,45 @@ CREATE TABLE `employeestatusinfo` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for news
+-- ----------------------------
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+  `nid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cid` bigint(20) NOT NULL COMMENT '公司的唯一标识',
+  `title` varchar(20) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`nid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of news
+-- ----------------------------
+INSERT INTO `news` VALUES ('1', '18', 'news01', 'news011', '2018-04-12 17:10:44', '2018-04-12 17:37:30');
+INSERT INTO `news` VALUES ('2', '18', 'news02', 'news02', '2018-04-12 17:10:49', null);
+
+-- ----------------------------
+-- Table structure for newsinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `newsinfo`;
+CREATE TABLE `newsinfo` (
+  `niid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nid` bigint(20) NOT NULL,
+  `img_url` varchar(100) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`niid`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of newsinfo
+-- ----------------------------
+INSERT INTO `newsinfo` VALUES ('1', '1', '/static/18/wnnnn/timg.jpg', '2018-04-12 17:10:44', '2018-04-12 17:37:30');
+INSERT INTO `newsinfo` VALUES ('2', '2', '/static/18/wnnnn/timg.jpg', '2018-04-12 17:10:49', null);
+
+-- ----------------------------
 -- Table structure for project
 -- ----------------------------
 DROP TABLE IF EXISTS `project`;
@@ -433,3 +472,47 @@ INSERT INTO `projectinfo` VALUES ('3', '3', '/static/18/wnnnn/123.jpg', '2018-04
 INSERT INTO `projectinfo` VALUES ('4', '4', '/static/18/wnnnn/123.jpg', '2018-04-10 08:00:00', '2018-05-03 08:00:00', '2018-04-12 13:26:36', null);
 INSERT INTO `projectinfo` VALUES ('5', '5', '/static/18/wnnnn/123.jpg', '2018-04-10 08:00:00', '2018-05-03 08:00:00', '2018-04-12 13:26:40', null);
 INSERT INTO `projectinfo` VALUES ('6', '6', '/static/18/wnnnn/123.jpg', '2018-04-10 08:00:00', '2018-05-03 08:00:00', '2018-04-12 13:26:44', null);
+
+-- ----------------------------
+-- Table structure for serviceinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `serviceinfo`;
+CREATE TABLE `serviceinfo` (
+  `siid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `sid` bigint(20) NOT NULL,
+  `img_url` varchar(100) DEFAULT NULL,
+  `start_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`siid`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of serviceinfo
+-- ----------------------------
+INSERT INTO `serviceinfo` VALUES ('1', '1', '/static/18/wnnnn/timg.jpg', '2018-04-10 08:00:00', '2018-04-12 17:07:45', '2018-04-12 17:37:17');
+INSERT INTO `serviceinfo` VALUES ('2', '2', null, '2018-04-10 08:00:00', '2018-04-12 17:07:52', null);
+INSERT INTO `serviceinfo` VALUES ('3', '3', null, '2018-04-10 08:00:00', '2018-04-12 17:07:59', null);
+INSERT INTO `serviceinfo` VALUES ('4', '4', null, '2018-04-10 08:00:00', '2018-04-12 17:08:49', null);
+
+-- ----------------------------
+-- Table structure for services
+-- ----------------------------
+DROP TABLE IF EXISTS `services`;
+CREATE TABLE `services` (
+  `sid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cid` bigint(20) NOT NULL COMMENT '公司的唯一标识',
+  `name` varchar(50) DEFAULT NULL COMMENT '服务名称',
+  `description` varchar(500) NOT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of services
+-- ----------------------------
+INSERT INTO `services` VALUES ('1', '18', 'service01', 'service01', '2018-04-12 17:07:45', '2018-04-12 17:37:17');
+INSERT INTO `services` VALUES ('2', '18', 'service02', 'service02', '2018-04-12 17:07:52', null);
+INSERT INTO `services` VALUES ('3', '18', 'service03', 'service03', '2018-04-12 17:07:59', null);
+INSERT INTO `services` VALUES ('4', '18', 'test001', 'service01', '2018-04-12 17:08:49', null);
