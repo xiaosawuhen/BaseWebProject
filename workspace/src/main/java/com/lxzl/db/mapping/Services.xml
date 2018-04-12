@@ -3,6 +3,20 @@
 <mapper namespace="com.lxzl.db.dao.ServicesMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Services">  
 	</select>
+	
+	<select id="selectByCompanyId" resultType="com.lxzl.db.transfor.bean.ServicesBean">  
+		SELECT s.sid AS sid,
+				s.cid AS cid,
+				s.`name` AS name,
+				s.description AS description,
+     			DATE_FORMAT(si.start_time,'%Y-%m-%d') as startTimeStr,
+				si.img_url AS imgUrl
+		  FROM services s
+		  LEFT JOIN serviceinfo si
+		         ON s.sid = si.sid
+     	  WHERE s.cid = #{cid}
+	</select>
+	
 	<insert id="insert" parameterType="com.lxzl.db.bean.Services">
 	</insert>
 	<insert id="insertBatch" parameterType="list">

@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Customerlevel;
 
 public interface CustomerlevelService {
 
-	Integer insertBatch(List<Customerlevel> list);
-
-	Integer insert(Customerlevel customerlevel);
-
 	List<Customerlevel> select(Map<String, String> map);
 
 }

@@ -19,16 +19,6 @@ public class CompanyemployeeinfoServiceImpl implements CompanyemployeeinfoServic
 	CompanyemployeeinfoMapper companyemployeeinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Companyemployeeinfo> list) {
-		return companyemployeeinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Companyemployeeinfo companyemployeeinfo) {
-		return companyemployeeinfoMapper.insert(companyemployeeinfo);
-	}
-
-	@Transactional
 	public List<Companyemployeeinfo> select(Map<String, String> map) {
 		return companyemployeeinfoMapper.select(map);
 	}

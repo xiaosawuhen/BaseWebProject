@@ -18,16 +18,6 @@ public class NewsinfoServiceImpl implements NewsinfoService {
 	NewsinfoMapper newsinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Newsinfo> list) {
-		return newsinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Newsinfo newsinfo) {
-		return newsinfoMapper.insert(newsinfo);
-	}
-
-	@Transactional
 	public List<Newsinfo> select(Map<String, String> map) {
 		return newsinfoMapper.select(map);
 	}

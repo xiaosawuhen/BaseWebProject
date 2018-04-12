@@ -8,17 +8,11 @@ import com.lxzl.db.transfor.bean.CredentialBean;
 
 public interface CredentialService {
 
-	Integer insertBatch(List<Credential> list);
-
 	List<Credential> select(Map<String, String> map);
 
 	List<CredentialBean> selectByCnt(Map<String, Object> paramMap);
 
-	Integer insert(CredentialBean credentialBean);
-
 	CredentialBean selectById(Long crid);
 
-	Integer updateById(CredentialBean credentialBean);
-
-	Integer deleteById(Integer crid);
+	List<CredentialBean> selectByCompanyId(Long cid);
 }

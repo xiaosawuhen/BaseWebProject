@@ -30,6 +30,8 @@ public class ServicesBean implements Serializable {
 	private Date startTime;
 
 	private String startTimeStr;
+	
+	private String imgUrl;
 
 	/**
 	 * @return the sid
@@ -113,5 +115,19 @@ public class ServicesBean implements Serializable {
 	 */
 	public void setStartTimeStr(String startTimeStr) {
 		this.startTimeStr = startTimeStr;
+	}
+
+	/**
+	 * @return the imgUrl
+	 */
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	/**
+	 * @param imgUrl the imgUrl to set
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 }

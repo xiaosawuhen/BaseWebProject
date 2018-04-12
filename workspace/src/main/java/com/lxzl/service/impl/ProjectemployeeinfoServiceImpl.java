@@ -19,16 +19,6 @@ public class ProjectemployeeinfoServiceImpl implements ProjectemployeeinfoServic
 	ProjectemployeeinfoMapper projectemployeeinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Projectemployeeinfo> list) {
-		return projectemployeeinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Projectemployeeinfo projectemployeeinfo) {
-		return projectemployeeinfoMapper.insert(projectemployeeinfo);
-	}
-
-	@Transactional
 	public List<Projectemployeeinfo> select(Map<String, String> map) {
 		return projectemployeeinfoMapper.select(map);
 	}

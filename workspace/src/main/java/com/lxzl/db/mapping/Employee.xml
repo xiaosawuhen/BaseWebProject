@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lxzl.db.dao.EmployeeMapper" >
-	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Employee">  
+	<select id="select" parameterType="map" resultType="com.lxzl.db.transfor.bean.EmployeeBean">  
 	</select>
-	<insert id="insert" parameterType="com.lxzl.db.bean.Employee">
-	</insert>
-	<insert id="insertBatch" parameterType="list">
-		INSERT INTO
-			USER(
-			name,
-			email
-		)
-		VALUES
-		<foreach collection="list" item="item" separator=",">
-			(
-				#{item.name},
-				#{item.email}
-			)
-		</foreach>
-	</insert>
+	
+	<select id="selectByCompanyId" resultType="com.lxzl.db.transfor.bean.EmployeeBean"> 
+		SELECT e.eid AS eid,
+					e.`name` AS name,
+					e.sex AS sex,
+					e.age AS age,
+					ei.img_url AS imgUrl,
+					ei.alias_name AS aliasName,
+					ei.email AS email,
+					ei.phone AS phone
+		  FROM employee e
+		  LEFT JOIN employeeinfo ei
+		         ON e.eid = ei.eid
+		  LEFT JOIN companyemployeeinfo cei
+				 ON cei.eid = e.eid
+     	  WHERE cei.cid = #{cid} 
+	</select>
 </mapper>
 

@@ -19,43 +19,20 @@ public class NewsServiceImpl implements NewsService {
 	NewsMapper newsMapper;
 
 	@Transactional
-	public Integer insertBatch(List<News> list) {
-		return newsMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(News news) {
-		return newsMapper.insert(news);
-	}
-
-	@Transactional
 	public List<News> select(Map<String, String> map) {
 		return newsMapper.select(map);
 	}
 
 	public List<NewsBean> selectByCnt(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer insert(NewsBean newsBean) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public NewsBean selectById(Integer nid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Integer updateById(NewsBean newsBean) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer deleteById(Long nid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NewsBean> selectByCompanyId(Long cid) {
+		return newsMapper.selectByCompanyId(cid);
 	}
 
 }

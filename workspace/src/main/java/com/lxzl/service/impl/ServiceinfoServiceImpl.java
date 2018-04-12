@@ -18,16 +18,6 @@ public class ServiceinfoServiceImpl implements ServiceinfoService {
 	ServiceinfoMapper serviceinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Serviceinfo> list) {
-		return serviceinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Serviceinfo serviceinfo) {
-		return serviceinfoMapper.insert(serviceinfo);
-	}
-
-	@Transactional
 	public List<Serviceinfo> select(Map<String, String> map) {
 		return serviceinfoMapper.select(map);
 	}

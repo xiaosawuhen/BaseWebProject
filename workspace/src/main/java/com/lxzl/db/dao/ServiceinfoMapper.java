@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Serviceinfo;
 
 public interface ServiceinfoMapper {
 
-	Integer insertBatch(List<Serviceinfo> list);
-
-	Integer insert(Serviceinfo serviceinfo);
-
 	List<Serviceinfo> select(Map<String, String> map);
 
 }

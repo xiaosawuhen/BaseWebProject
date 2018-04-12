@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Employeestatus;
 
 public interface EmployeestatusMapper {
 
-	Integer insertBatch(List<Employeestatus> list);
-
-	Integer insert(Employeestatus employeestatus);
-
 	List<Employeestatus> select(Map<String, String> map);
 
 }

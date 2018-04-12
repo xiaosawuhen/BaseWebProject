@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Newsinfo;
 
 public interface NewsinfoService {
 
-	Integer insertBatch(List<Newsinfo> list);
-
-	Integer insert(Newsinfo newsinfo);
-
 	List<Newsinfo> select(Map<String, String> map);
 
 }

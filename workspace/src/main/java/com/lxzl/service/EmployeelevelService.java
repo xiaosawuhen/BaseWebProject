@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Employeelevel;
 
 public interface EmployeelevelService {
 
-	Integer insertBatch(List<Employeelevel> list);
-
-	Integer insert(Employeelevel employeelevel);
-
 	List<Employeelevel> select(Map<String, String> map);
 
 }

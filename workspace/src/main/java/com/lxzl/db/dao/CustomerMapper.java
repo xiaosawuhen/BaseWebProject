@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Customer;
 
 public interface CustomerMapper {
 
-	Integer insertBatch(List<Customer> list);
-
-	Integer insert(Customer customer);
-
 	List<Customer> select(Map<String, String> map);
 
 }

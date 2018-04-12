@@ -8,18 +8,12 @@ import com.lxzl.db.transfor.bean.ServicesBean;
 
 public interface ServicesService {
 
-	Integer insertBatch(List<Services> list);
-
 	List<Services> select(Map<String, String> map);
 
 	List<ServicesBean> selectByCnt(Map<String, Object> paramMap);
 
-	Integer insert(ServicesBean servicesBean);
-
 	ServicesBean selectById(Integer sid);
 
-	Integer updateById(ServicesBean servicesBean);
-
-	Integer deleteById(Long sid);
+	List<ServicesBean> selectByCompanyId(Long cid);
 
 }

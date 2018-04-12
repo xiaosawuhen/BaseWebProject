@@ -66,61 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	<div class="page-wrapper">
 		
-		<!-- Top Bar Start -->
-		<div class="top-bar-v1">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 top-contact">
-						<div class="list">
-							<i class="fa fa-envelope"></i> <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
-						</div>
-						<div class="list">
-							<i class="fa fa-phone"></i> 123 456 7890
-						</div>
-					</div>
-					<div class="col-md-8 top-social">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Top Bar End -->
-
-		<!-- Header Start -->
-		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 logo">
-						<a href="home-layout-1.html"><img src="static/images/logo.png" alt=""></a>
-					</div>
-					<div class="col-md-8 nav-wrapper">
-
-						<!-- Nav Start -->
-						<div id="menuzord" class="menuzord">
-							<ul class="menuzord-menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="services.html">Service</a></li>
-								<li><a href="gallery.html">Gallery</a></li>
-								<li><a href="Blog.html">Blog</a></li>
-								<li><a href="contact.html">Contact Us</a></li>
-							</ul>
-						</div>
-						<!-- Nav End -->
-
-					</div>
-				</div>
-			</div>
-		</header>
-		<!-- Header End -->
-
+		<c:import url="common/header.jsp"></c:import>
 		
 		<!-- Slider Start -->
 		<section class="main-slider">
@@ -162,33 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</section>
 		<!-- Slider End -->
-
-
 		
-		<!-- Appointment Start -->
-		<div class="appointment-v1">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<div class="left">
-							<h2>Make Appointment</h2>
-							<p>If you like us, come to our shop and run a complete performance test.</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="right">
-							<a href="">Make an Appointment</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<!-- Appointment End -->
-
-
-
-
 		<!-- Service Start -->
 		<section class="service-v1">
 			<div class="container">
@@ -202,84 +122,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/1.png" alt="">
-							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Mechanical Engineering</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
+					<c:forEach items="${servicesList}" var="services">
+						<div class="col-sm-6 col-md-4 col-lg-4">
+							<div class="item">
+								<div class="icon">
+									<img src="${services.imgUrl}" alt="" class="services-image-index">
 								</div>
-							</div>							
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/2.png" alt="">
+								<div class="text">
+									<div class="inner">
+										<h3>${services.name}</h3>
+										<p>${services.description}</p>
+									</div>
+								</div>							
 							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Material Engineering</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
-								</div>
-							</div>							
 						</div>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/3.png" alt="">
-							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Agriculture Processing</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
-								</div>
-							</div>							
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/4.png" alt="">
-							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Chemical Research</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
-								</div>
-							</div>							
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/5.png" alt="">
-							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Power and Energy</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
-								</div>
-							</div>							
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<div class="item">
-							<div class="icon">
-								<img src="static/images/service-icons/6.png" alt="">
-							</div>
-							<div class="text">
-								<div class="inner">
-									<h3>Petroleum and Gas</h3>
-									<p>Ad his diam eirmod persecuti. Eum health cube scriptorem eu, eu aperiri definiebas concludaturque eam.</p>
-								</div>
-							</div>							
-						</div>
-					</div>
+					</c:forEach>
 				</div>
 			</div>
 		</section>
@@ -303,9 +160,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- Team Carousel Start -->
 						<div class="team-carousel">
 
+						<c:forEach items="${employeeList}" var="employee">
 							<div class="item">
 								<div class="thumb">
-									<img src="static/images/team-members/1.jpg" alt="">
+									<img src="${employee.imgUrl}" alt="" class="employee-image-index">
 									<div class="overlay"></div>
 									<div class="social-icons">
 										<ul>
@@ -317,150 +175,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 								</div>
 								<div class="text">
-									<h3><a href="">Patrick Flynn</a></h3>
+									<h3><a href="">${employee.name}</a></h3>
 									<p>Director</p>
 								</div>
 							</div>
-
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/2.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Brent Grundy</a></h3>
-									<p>Engineer</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/3.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Jeff Benson</a></h3>
-									<p>Engineer</p>
-								</div>
-							</div>
-
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/4.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Danny Ashton</a></h3>
-									<p>Manager</p>
-								</div>
-							</div>
-
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/1.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Patrick Flynn</a></h3>
-									<p>Director</p>
-								</div>
-							</div>
-
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/2.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Brent Grundy</a></h3>
-									<p>Engineer</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/3.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Jeff Benson</a></h3>
-									<p>Engineer</p>
-								</div>
-							</div>
-
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/team-members/4.jpg" alt="">
-									<div class="overlay"></div>
-									<div class="social-icons">
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-										</ul>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">Danny Ashton</a></h3>
-									<p>Manager</p>
-								</div>
-							</div>
-
-							
+						</c:forEach>
 						</div>
 						<!-- Team Carousel End -->
 
@@ -469,80 +188,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</section>
 		<!-- Team End -->
-
-
-
-		<!-- Testimonial Start -->
-		<section class="testimonial-v1">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="heading">
-							<h2>Testimonial</h2>
-							<p>Our Happy Clients Tell About Us</p>
-							<div class="sep sep-white"></div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						
-						<!-- Testimonial Carousel Start -->
-						<div class="testimonial-carousel">
-							<div class="item">
-								<div class="testimonial-wrapper">								
-									<div class="content">
-										<div class="comment">
-											<p>
-												“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
-											</p>
-											<div class="icon"></div>
-										</div>
-										<div class="author">
-											<div class="photo">
-												<img src="static/images/testimonial/2.jpg" alt="">
-											</div>
-											<div class="text">
-												<h3>JOHN DOE </h3>
-												<h4>Managing Director <span>(ABC Inc.)</span></h4>
-											</div>
-										</div>										
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="testimonial-wrapper">								
-									<div class="content">
-										<div class="comment">
-											<p>
-												“Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.”
-											</p>
-											<div class="icon"></div>
-										</div>
-										<div class="author">
-											<div class="photo">
-												<img src="static/images/testimonial/3.jpg" alt="">
-											</div>
-											<div class="text">
-												<h3>JOHN DOE </h3>
-												<h4>CEO <span>(XYZ Ltd.)</span></h4>
-											</div>
-										</div>										
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Testimonial Carousel End -->
-
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Testimonial End -->
-
-
-
 
 		<!-- News Start -->
 		<section class="news-v1">
@@ -561,109 +206,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 						<!-- News Carousel Start -->
 						<div class="news-carousel">
-
+						<c:forEach items="${newsList}" var="news">
 							<div class="item">
 								<div class="thumb">
-									<img src="static/images/news/1.jpg" alt="">
+									<img src="${news.imgUrl}" alt="">
 									<div class="date">
 										<div class="day">25</div>
 										<div class="month">Sep</div>
 									</div>
 								</div>
 								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
+									<h3><a href="">${news.title}</a></h3>
 									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
+										${news.description}
 									</p>
 								</div>
 							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/news/2.jpg" alt="">
-									<div class="date">
-										<div class="day">11</div>
-										<div class="month">Aug</div>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
-									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
-									</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/news/3.jpg" alt="">
-									<div class="date">
-										<div class="day">28</div>
-										<div class="month">Jun</div>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
-									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
-									</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/news/4.jpg" alt="">
-									<div class="date">
-										<div class="day">25</div>
-										<div class="month">Sep</div>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
-									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
-									</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/news/5.jpg" alt="">
-									<div class="date">
-										<div class="day">11</div>
-										<div class="month">Aug</div>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
-									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
-									</p>
-								</div>
-							</div>
-
-							<div class="item">
-								<div class="thumb">
-									<img src="static/images/news/6.jpg" alt="">
-									<div class="date">
-										<div class="day">28</div>
-										<div class="month">Jun</div>
-									</div>
-								</div>
-								<div class="text">
-									<h3><a href="">News Title Here</a></h3>
-									<h4><i class="fa fa-comments-o" aria-hidden="true"></i> 24 Comments</h4>
-									<p>
-										In pede quis wisi accumsan, et posuere ac, lectus morbi hendrerit auctor aliquet sed orci, in condimentum faucibus congue vel.
-									</p>
-								</div>
-							</div>
-							
+						</c:forEach>
 						</div>
 						<!-- News Carousel End -->
 
@@ -682,20 +241,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<div class="col-md-3 col-sm-6">
 						<div class="counter-text">
-							<p><span class="counter">45</span></p>
-							<p><span>Branches</span></p>
+							<p><span class="counter">${projectList.size()}</span></p>
+							<p><span>Products</span></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="counter-text">
-							<p><span class="counter">65</span></p>
+							<p><span class="counter">${employeeList.size()}</span></p>
 							<p><span>Staffs</span></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
 						<div class="counter-text">
-							<p><span class="counter">2560</span></p>
-							<p><span>Customers</span></p>
+							<p><span class="counter">${credentialList.size()}</span></p>
+							<p><span>Credentials</span></p>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6">
@@ -717,8 +276,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<div class="col-md-12">
 						<div class="heading">
-							<h2>Our Partners</h2>
-							<p>All Our Company Partners are Listed Below</p>
+							<h2>Our Credentials</h2>
+							<p>All Our Company Credentials are Listed Below</p>
 							<div class="sep"></div>
 						</div>
 					</div>
@@ -727,66 +286,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-md-12">
 							
 						<div class="partner-carousel">
+						<c:forEach items="${credentialList}" var="credential">
 							<div class="item">
 								<div class="inner">
-									<a href="#"><img src="static/images/partner/1.png" alt=""></a>
+									<a href="#"><img src="${credential.imgUrl}" alt=""></a>
 								</div>
 							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/2.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/3.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/4.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/5.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/1.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/2.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/3.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/4.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/5.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/1.png" alt=""></a>
-								</div>
-							</div>
-							<div class="item">
-								<div class="inner">
-									<a href="#"><img src="static/images/partner/2.png" alt=""></a>
-								</div>
-							</div>
+						</c:forEach>
 						</div>
 
 					</div>
@@ -817,82 +323,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</section>
 		<!-- Footer Social End -->
 
-		
-		<!-- Footer Main Start -->
-		<section class="footer-main">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-6 col-md-3 col-lg-3 footer-col">
-						<h3>About zFactory</h3>
-						<p>
-							Dicant discere pro no, no pri prima facilisi. Sit munere voluptaria ea. Ex per fugit prodesset adipiscing, viderer aliquam et vim. Id enim esse deleniti mel, vix eirmod omittam constituam ad. Choro doming mea eu, melius docendi tractatos cu quo.
-						</p>
-					</div>
-					<div class="col-sm-6 col-md-3 col-lg-3 footer-col">
-						<h3>Latest News</h3>
-						<div class="news-item">
-							<div class="news-title"><a href="#">Lorem ipsum dolor sit amet, pri ea option scripserit, ex vis affert tantas graece</a></div>
-							<div class="news-date"><a href="#">July 24, 2017</a></div>
-						</div>
-						<div class="news-item">
-							<div class="news-title"><a href="#">Lorem ipsum dolor sit amet, pri ea option scripserit, ex vis affert tantas graece</a></div>
-							<div class="news-date"><a href="#">July 24, 2017</a></div>
-						</div>
-					</div>
-					<div class="col-sm-6 col-md-3 col-lg-3 footer-col">
-						<h3>Important Links</h3>
-						<div class="row">
-							<div class="col-md-12">
-								<ul>
-									<li><a href="#">Industrial Service 1</a></li>
-									<li><a href="#">Industrial Service 2</a></li>
-									<li><a href="#">Industrial Service 3</a></li>
-									<li><a href="#">Industrial Service 4</a></li>
-									<li><a href="#">Industrial Service 5</a></li>
-								</ul>
-							</div>
-						</div>						
-					</div>
-					<div class="col-sm-6 col-md-3 col-lg-3 footer-col">
-						<h3>Contact Us</h3>
-						<div class="contact-item">
-							<div class="icon"><i class="fa fa-map-marker"></i></div>
-							<div class="text">Unum debitis pro id, explicari</div>
-						</div>
-						<div class="contact-item">
-							<div class="icon"><i class="fa fa-phone"></i></div>
-							<div class="text">123-456-7878</div>
-						</div>
-						<div class="contact-item">
-							<div class="icon"><i class="fa fa-fax"></i></div>
-							<div class="text">123-456-7890</div>
-						</div>
-						<div class="contact-item">
-							<div class="icon"><i class="fa fa-envelope-o"></i></div>
-							<div class="text">info@yokobd.com</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Footer Main End -->
-
-		
-		<!-- Footer Bottom Start -->
-		<section class="footer-bottom">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8 copyright">
-						Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-					<div class="col-md-4 footer-menu">
-						
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Footer Bottom End -->
-
-
+		<c:import url="common/footer.jsp"></c:import>
 
 		<a href="#" class="scrollup">
 			<i class="fa fa-angle-up"></i>

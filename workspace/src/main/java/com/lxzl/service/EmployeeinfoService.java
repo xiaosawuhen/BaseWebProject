@@ -7,10 +7,6 @@ import com.lxzl.db.bean.Employeeinfo;
 
 public interface EmployeeinfoService {
 
-	Integer insertBatch(List<Employeeinfo> list);
-
-	Integer insert(Employeeinfo employeeinfo);
-
 	List<Employeeinfo> select(Map<String, String> map);
 
 }

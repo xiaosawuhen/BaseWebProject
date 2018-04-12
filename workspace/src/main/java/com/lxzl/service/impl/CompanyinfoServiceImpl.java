@@ -19,16 +19,6 @@ public class CompanyinfoServiceImpl implements CompanyinfoService {
 	CompanyinfoMapper companyinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Companyinfo> list) {
-		return companyinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Companyinfo companyinfo) {
-		return companyinfoMapper.insert(companyinfo);
-	}
-
-	@Transactional
 	public List<Companyinfo> select(Map<String, String> map) {
 		return companyinfoMapper.select(map);
 	}

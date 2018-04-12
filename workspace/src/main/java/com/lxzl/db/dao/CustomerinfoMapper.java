@@ -9,10 +9,6 @@ import com.lxzl.db.bean.Customerinfo;
 
 public interface CustomerinfoMapper {
 
-	Integer insertBatch(List<Customerinfo> list);
-
-	Integer insert(Customerinfo customerinfo);
-
 	List<Customerinfo> select(Map<String, String> map);
 
 	Customerinfo selectByAliasName(@Param("aliasName")String aliasName);

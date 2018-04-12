@@ -3,6 +3,20 @@
 <mapper namespace="com.lxzl.db.dao.CompanyMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Company">  
 	</select>
+	
+	<select id="selectById" parameterType="map" resultType="com.lxzl.db.transfor.bean.CompanyBean">  
+		SELECT ci.cid AS cid,
+				c.`name` AS name,
+				 c.description AS description,
+				 ci.address AS address,
+				 ci.fax AS fax,
+				 ci.mail AS mail,
+				 ci.tel AS tel
+		  FROM company c
+		  LEFT JOIN companyinfo ci
+		         ON ci.cid = c.cid
+     	 WHERE c.cid = #{cid}
+	</select>
 	<insert id="insert" parameterType="com.lxzl.db.bean.Company">
 	</insert>
 	<insert id="insertBatch" parameterType="list">

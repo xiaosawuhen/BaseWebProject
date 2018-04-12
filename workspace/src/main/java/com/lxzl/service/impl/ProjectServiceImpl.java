@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lxzl.db.bean.Project;
 import com.lxzl.db.dao.ProjectMapper;
+import com.lxzl.db.transfor.bean.ProjectBean;
 import com.lxzl.service.ProjectService;
 
 @Service("projectService")
@@ -19,18 +20,12 @@ public class ProjectServiceImpl implements ProjectService {
 	ProjectMapper projectMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Project> list) {
-		return projectMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Project project) {
-		return projectMapper.insert(project);
-	}
-
-	@Transactional
 	public List<Project> select(Map<String, String> map) {
 		return projectMapper.select(map);
+	}
+
+	public List<ProjectBean> selectByCompanyId(Long cid) {
+		return projectMapper.selectByCompanyId(cid);
 	}
 
 }

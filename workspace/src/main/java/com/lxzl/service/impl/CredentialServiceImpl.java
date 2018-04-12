@@ -19,11 +19,6 @@ public class CredentialServiceImpl implements CredentialService {
 	CredentialMapper credentialMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Credential> list) {
-		return credentialMapper.insertBatch(list);
-	}
-
-	@Transactional
 	public List<Credential> select(Map<String, String> map) {
 		return credentialMapper.select(map);
 	}
@@ -32,20 +27,12 @@ public class CredentialServiceImpl implements CredentialService {
 		return credentialMapper.selectByCnt(paramMap);
 	}
 
-	public Integer insert(CredentialBean credentialBean) {
-		return credentialMapper.insert(credentialBean);
-	}
-
 	public CredentialBean selectById(Long crid) {
 		return credentialMapper.selectById(crid);
 	}
 
-	public Integer updateById(CredentialBean credentialBean) {
-		return credentialMapper.updateById(credentialBean);
-	}
-
-	public Integer deleteById(Integer crid) {
-		return credentialMapper.deleteById(crid);
+	public List<CredentialBean> selectByCompanyId(Long cid) {
+		return credentialMapper.selectByCompanyId(cid);
 	}
 
 }

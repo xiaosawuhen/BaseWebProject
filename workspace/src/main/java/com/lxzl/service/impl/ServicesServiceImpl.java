@@ -19,43 +19,20 @@ public class ServicesServiceImpl implements ServicesService {
 	ServicesMapper servicesMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Services> list) {
-		return servicesMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Services services) {
-		return servicesMapper.insert(services);
-	}
-
-	@Transactional
 	public List<Services> select(Map<String, String> map) {
 		return servicesMapper.select(map);
 	}
 
 	public List<ServicesBean> selectByCnt(Map<String, Object> paramMap) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer insert(ServicesBean servicesBean) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ServicesBean selectById(Integer sid) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Integer updateById(ServicesBean servicesBean) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer deleteById(Long sid) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ServicesBean> selectByCompanyId(Long cid) {
+		return servicesMapper.selectByCompanyId(cid);
 	}
 
 }

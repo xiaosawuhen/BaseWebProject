@@ -19,16 +19,6 @@ public class EmployeeinfoServiceImpl implements EmployeeinfoService {
 	EmployeeinfoMapper employeeinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Employeeinfo> list) {
-		return employeeinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Employeeinfo employeeinfo) {
-		return employeeinfoMapper.insert(employeeinfo);
-	}
-
-	@Transactional
 	public List<Employeeinfo> select(Map<String, String> map) {
 		return employeeinfoMapper.select(map);
 	}

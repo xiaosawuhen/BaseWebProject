@@ -19,16 +19,6 @@ public class EmployeestatusServiceImpl implements EmployeestatusService {
 	EmployeestatusMapper employeestatusMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Employeestatus> list) {
-		return employeestatusMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Employeestatus employeestatus) {
-		return employeestatusMapper.insert(employeestatus);
-	}
-
-	@Transactional
 	public List<Employeestatus> select(Map<String, String> map) {
 		return employeestatusMapper.select(map);
 	}

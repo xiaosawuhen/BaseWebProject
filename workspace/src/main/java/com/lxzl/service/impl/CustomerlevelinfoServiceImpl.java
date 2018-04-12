@@ -19,16 +19,6 @@ public class CustomerlevelinfoServiceImpl implements CustomerlevelinfoService {
 	CustomerlevelinfoMapper customerlevelinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Customerlevelinfo> list) {
-		return customerlevelinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Customerlevelinfo customerlevelinfo) {
-		return customerlevelinfoMapper.insert(customerlevelinfo);
-	}
-
-	@Transactional
 	public List<Customerlevelinfo> select(Map<String, String> map) {
 		return customerlevelinfoMapper.select(map);
 	}

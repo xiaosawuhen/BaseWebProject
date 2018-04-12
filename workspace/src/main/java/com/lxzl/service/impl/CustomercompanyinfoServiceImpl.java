@@ -19,16 +19,6 @@ public class CustomercompanyinfoServiceImpl implements CustomercompanyinfoServic
 	CustomercompanyinfoMapper customercompanyinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Customercompanyinfo> list) {
-		return customercompanyinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Customercompanyinfo customercompanyinfo) {
-		return customercompanyinfoMapper.insert(customercompanyinfo);
-	}
-
-	@Transactional
 	public List<Customercompanyinfo> select(Map<String, String> map) {
 		return customercompanyinfoMapper.select(map);
 	}

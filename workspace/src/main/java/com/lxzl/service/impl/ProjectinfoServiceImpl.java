@@ -19,16 +19,6 @@ public class ProjectinfoServiceImpl implements ProjectinfoService {
 	ProjectinfoMapper projectinfoMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Projectinfo> list) {
-		return projectinfoMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Projectinfo projectinfo) {
-		return projectinfoMapper.insert(projectinfo);
-	}
-
-	@Transactional
 	public List<Projectinfo> select(Map<String, String> map) {
 		return projectinfoMapper.select(map);
 	}

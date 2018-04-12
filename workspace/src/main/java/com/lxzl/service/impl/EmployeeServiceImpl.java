@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lxzl.db.bean.Employee;
 import com.lxzl.db.dao.EmployeeMapper;
+import com.lxzl.db.transfor.bean.EmployeeBean;
 import com.lxzl.service.EmployeeService;
 
 @Service("employeeService")
@@ -19,18 +20,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	EmployeeMapper employeeMapper;
 
 	@Transactional
-	public Integer insertBatch(List<Employee> list) {
-		return employeeMapper.insertBatch(list);
-	}
-
-	@Transactional
-	public Integer insert(Employee employee) {
-		return employeeMapper.insert(employee);
-	}
-
-	@Transactional
 	public List<Employee> select(Map<String, String> map) {
 		return employeeMapper.select(map);
+	}
+
+	public List<EmployeeBean> selectByCompanyId(Long cid) {
+		return employeeMapper.selectByCompanyId(cid);
 	}
 
 }
