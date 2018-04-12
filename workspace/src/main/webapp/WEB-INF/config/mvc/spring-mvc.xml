@@ -35,4 +35,17 @@
 		<property name="order" value="1" />
 	</bean>
 	<!--视图解释器 结束 -->
+		<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>classpath*:/spring/jdbc.properties</value> -->
+				<value>/WEB-INF/config/jdbc.properties</value>
+				<value>/WEB-INF/config/project.properties</value>
+			</list>
+		</property>
+		<!-- <property name="location" value="/WEB-INF/config/jdbc.properties" 
+			/> -->
+	</bean>
 </beans>

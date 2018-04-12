@@ -11,8 +11,20 @@
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context-4.0.xsd">
                        
-    <!-- 激活spring的注解. -->  
-<!--     <context:annotation-config />   -->
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>classpath*:/spring/jdbc.properties</value> -->
+				<value>/WEB-INF/config/jdbc.properties</value>
+				<value>/WEB-INF/config/project.properties</value>
+			</list>
+		</property>
+		<!-- <property name="location" value="/WEB-INF/config/jdbc.properties" 
+			/> -->
+	</bean>
+	
 	<!-- 自动扫描 -->
 	<context:component-scan base-package="com.lxzl.db,com.lxzl.service,com.lxzl.security" />  
                            
