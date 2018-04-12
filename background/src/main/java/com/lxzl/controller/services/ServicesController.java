@@ -93,7 +93,7 @@ public class ServicesController {
 		
 		ServicesBean servicesBean = servicesService.selectById(sid);
 		
-		mv.addObject("project", servicesBean);
+		mv.addObject("services", servicesBean);
 		
 		mv.setViewName("services/edit");
 		return mv;

@@ -7,7 +7,7 @@
 		UPDATE newsinfo
 		   SET img_url = #{imgUrl},
 		   	   update_time = now()
-		 WHERE niid = #{niid}
+		 WHERE nid = #{nid}
 	</update>
 	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.NewsBean">
 		INSERT INTO
@@ -39,7 +39,7 @@
 	<delete id="deleteById">
 		DELETE 
 		  FROM projectinfo
-		 WHERE niid = #{niid}
+		 WHERE nid = #{nid}
 	</delete>
 </mapper>
 

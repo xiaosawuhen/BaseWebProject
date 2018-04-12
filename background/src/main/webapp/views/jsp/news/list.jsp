@@ -293,7 +293,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	function detailIfno(which){
 		var nid = $(which).parent().attr("nid");
-		window.location.href = "news/edit?pid=" + nid;
+		window.location.href = "news/edit?nid=" + nid;
 	}
   </script>
 

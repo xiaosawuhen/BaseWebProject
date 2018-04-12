@@ -93,7 +93,7 @@ public class NewsController {
 		
 		NewsBean newsBean = newsService.selectById(nid);
 		
-		mv.addObject("project", newsBean);
+		mv.addObject("news", newsBean);
 		
 		mv.setViewName("news/edit");
 		return mv;

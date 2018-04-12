@@ -30,7 +30,7 @@
 		   SET title = #{title},
 		       description = #{description},
 		   	   update_time = now()
-		 WHERE pid = #{pid}
+		 WHERE nid = #{nid}
 	</update>
 	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.NewsBean" useGeneratedKeys="true" keyProperty="nid">
 		INSERT INTO
