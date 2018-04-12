@@ -53,6 +53,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <li><a class="" href="project/add">项目添加</a></li>
                       </ul>
                   </li>  
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>服务信息管理</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="services/list">服务查询</a></li>
+                          <li><a class="" href="services/add">服务添加</a></li>
+                      </ul>
+                  </li> 
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>新闻信息管理</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="news/list">新闻查询</a></li>
+                          <li><a class="" href="news/add">新闻添加</a></li>
+                      </ul>
+                  </li> 
               </ul>
               <!-- sidebar menu end-->
           </div>

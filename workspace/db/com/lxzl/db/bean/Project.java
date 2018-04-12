@@ -22,6 +22,9 @@ public class Project implements Serializable {
 	/** 公司. */
 	private Company company;
 
+	/** 服务表. */
+	private Services services;
+
 	/** 名称. */
 	private String name;
 
@@ -84,6 +87,25 @@ public class Project implements Serializable {
 	 */
 	public Company getCompany() {
 		return this.company;
+	}
+
+	/**
+	 * Set the 服务表.
+	 * 
+	 * @param services
+	 *            服务表
+	 */
+	public void setServices(Services services) {
+		this.services = services;
+	}
+
+	/**
+	 * Get the 服务表.
+	 * 
+	 * @return 服务表
+	 */
+	public Services getServices() {
+		return this.services;
 	}
 
 	/**

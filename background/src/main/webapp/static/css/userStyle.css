@@ -30,6 +30,36 @@
 	display: block;
 }
 
+.imageUploadArea .user-image-services {
+	width:200px;
+	height:200px;
+/* 	border-radius:50% ;     */
+	margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+	cursor: pointer;
+}
+
+.imageUploadArea .user-image-services ~label {
+	display: block;
+}
+
+.imageUploadArea .user-image-news {
+	width:200px;
+	height:200px;
+/* 	border-radius:50% ;     */
+	margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+	cursor: pointer;
+}
+
+.imageUploadArea .user-image-news ~label {
+	display: block;
+}
+
 .imageUploadArea .user-image-input {
 	display: none;
 }

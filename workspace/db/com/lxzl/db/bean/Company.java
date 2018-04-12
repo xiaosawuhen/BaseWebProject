@@ -43,8 +43,14 @@ public class Company implements Serializable {
 	/** The set of 公司客户信息表. */
 	private Set<Customercompanyinfo> customercompanyinfoSet;
 
+	/** The set of 新闻表. */
+	private Set<News> newsSet;
+
 	/** The set of 项目表. */
 	private Set<Project> projectSet;
+
+	/** The set of 服务表. */
+	private Set<Services> servicesSet;
 
 	/**
 	 * Constructor.
@@ -54,7 +60,9 @@ public class Company implements Serializable {
 		this.companyinfoSet = new HashSet<Companyinfo>();
 		this.credentialSet = new HashSet<Credential>();
 		this.customercompanyinfoSet = new HashSet<Customercompanyinfo>();
+		this.newsSet = new HashSet<News>();
 		this.projectSet = new HashSet<Project>();
+		this.servicesSet = new HashSet<Services>();
 	}
 
 	/**
@@ -269,6 +277,35 @@ public class Company implements Serializable {
 	}
 
 	/**
+	 * Set the set of the 新闻表.
+	 * 
+	 * @param newsSet
+	 *            The set of 新闻表
+	 */
+	public void setNewsSet(Set<News> newsSet) {
+		this.newsSet = newsSet;
+	}
+
+	/**
+	 * Add the 新闻表.
+	 * 
+	 * @param news
+	 *            新闻表
+	 */
+	public void addNews(News news) {
+		this.newsSet.add(news);
+	}
+
+	/**
+	 * Get the set of the 新闻表.
+	 * 
+	 * @return The set of 新闻表
+	 */
+	public Set<News> getNewsSet() {
+		return this.newsSet;
+	}
+
+	/**
 	 * Set the set of the 项目表.
 	 * 
 	 * @param projectSet
@@ -295,6 +332,35 @@ public class Company implements Serializable {
 	 */
 	public Set<Project> getProjectSet() {
 		return this.projectSet;
+	}
+
+	/**
+	 * Set the set of the 服务表.
+	 * 
+	 * @param servicesSet
+	 *            The set of 服务表
+	 */
+	public void setServicesSet(Set<Services> servicesSet) {
+		this.servicesSet = servicesSet;
+	}
+
+	/**
+	 * Add the 服务表.
+	 * 
+	 * @param services
+	 *            服务表
+	 */
+	public void addServices(Services services) {
+		this.servicesSet.add(services);
+	}
+
+	/**
+	 * Get the set of the 服务表.
+	 * 
+	 * @return The set of 服务表
+	 */
+	public Set<Services> getServicesSet() {
+		return this.servicesSet;
 	}
 
 	/**

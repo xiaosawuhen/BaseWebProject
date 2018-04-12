@@ -6,9 +6,13 @@ DROP TABLE IF EXISTS CompanyEmployeeInfo;
 DROP TABLE IF EXISTS CompanyInfo;
 DROP TABLE IF EXISTS Credential;
 DROP TABLE IF EXISTS CustomerCompanyInfo;
+DROP TABLE IF EXISTS NewsInfo;
+DROP TABLE IF EXISTS News;
 DROP TABLE IF EXISTS ProjectEmployeeInfo;
 DROP TABLE IF EXISTS ProjectInfo;
 DROP TABLE IF EXISTS Project;
+DROP TABLE IF EXISTS ServiceInfo;
+DROP TABLE IF EXISTS Services;
 DROP TABLE IF EXISTS Company;
 DROP TABLE IF EXISTS CustomerEstimateInfo;
 DROP TABLE IF EXISTS CustomerInfo;
@@ -47,7 +51,7 @@ CREATE TABLE CompanyEmployeeInfo
 (
 	ceiid bigint NOT NULL AUTO_INCREMENT,
 	-- 职工唯一标识
-	edi bigint NOT NULL COMMENT '职工唯一标识',
+	eid bigint NOT NULL COMMENT '职工唯一标识',
 	-- 公司的唯一标识
 	cid bigint NOT NULL COMMENT '公司的唯一标识',
 	-- 创建日期
@@ -159,6 +163,7 @@ CREATE TABLE CustomerInfo
 	alias_name varchar(20) COMMENT '别名',
 	-- 密码
 	pwd varchar(20) COMMENT '密码',
+	img_url varchar(100),
 	-- 手机号
 	phone varchar(20) COMMENT '手机号',
 	email varchar(50),
@@ -203,7 +208,7 @@ CREATE TABLE CustomerLevelInfo
 CREATE TABLE Employee
 (
 	-- 职工唯一标识
-	edi bigint NOT NULL AUTO_INCREMENT COMMENT '职工唯一标识',
+	eid bigint NOT NULL AUTO_INCREMENT COMMENT '职工唯一标识',
 	-- 职工姓名
 	name varchar(20) COMMENT '职工姓名',
 	-- 职工年龄
@@ -213,7 +218,7 @@ CREATE TABLE Employee
 	-- 创建日期
 	create_time datetime COMMENT '创建日期',
 	update_time datetime,
-	PRIMARY KEY (edi)
+	PRIMARY KEY (eid)
 );
 
 
@@ -225,6 +230,7 @@ CREATE TABLE EmployeeInfo
 	eid bigint NOT NULL COMMENT '职工唯一标识',
 	-- 员工别名
 	alias_name varchar(20) COMMENT '员工别名',
+	img_url varchar(100),
 	-- 员工密码
 	pwd varchar(20) COMMENT '员工密码',
 	-- 员工手机号
@@ -257,7 +263,7 @@ CREATE TABLE EmployeeLevelInfo
 	-- 员工级别ID
 	elid bigint NOT NULL COMMENT '员工级别ID',
 	-- 职工唯一标识
-	edi bigint NOT NULL COMMENT '职工唯一标识',
+	eid bigint NOT NULL COMMENT '职工唯一标识',
 	-- 创建日期
 	create_time datetime COMMENT '创建日期',
 	update_time datetime,
@@ -286,11 +292,37 @@ CREATE TABLE EmployeeStatusInfo
 	esiid bigint NOT NULL AUTO_INCREMENT,
 	esid bigint NOT NULL,
 	-- 职工唯一标识
-	edi bigint NOT NULL COMMENT '职工唯一标识',
+	eid bigint NOT NULL COMMENT '职工唯一标识',
 	-- 创建日期
 	create_time datetime COMMENT '创建日期',
 	update_time datetime,
 	PRIMARY KEY (esiid)
+);
+
+
+CREATE TABLE News
+(
+	nid bigint NOT NULL AUTO_INCREMENT,
+	-- 公司的唯一标识
+	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	title varchar(20),
+	description varchar(200),
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (nid)
+);
+
+
+CREATE TABLE NewsInfo
+(
+	niid bigint NOT NULL AUTO_INCREMENT,
+	nid bigint NOT NULL,
+	img_url varchar(100),
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (niid)
 );
 
 
@@ -299,6 +331,7 @@ CREATE TABLE Project
 	pid bigint NOT NULL AUTO_INCREMENT,
 	-- 公司的唯一标识
 	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	sid bigint NOT NULL,
 	-- 项目名称
 	name varchar(30) COMMENT '项目名称',
 	-- 项目描述
@@ -314,7 +347,7 @@ CREATE TABLE ProjectEmployeeInfo
 (
 	peiid bigint NOT NULL AUTO_INCREMENT,
 	-- 职工唯一标识
-	edi bigint NOT NULL COMMENT '职工唯一标识',
+	eid bigint NOT NULL COMMENT '职工唯一标识',
 	pid bigint NOT NULL,
 	start_time datetime,
 	end_time datetime,
@@ -329,12 +362,40 @@ CREATE TABLE ProjectInfo
 (
 	piid bigint NOT NULL AUTO_INCREMENT,
 	pid bigint NOT NULL,
+	img_url varchar(100),
 	start_time datetime,
 	end_time datetime,
 	-- 创建日期
 	create_time datetime COMMENT '创建日期',
 	update_time datetime,
 	PRIMARY KEY (piid)
+);
+
+
+CREATE TABLE ServiceInfo
+(
+	siid bigint NOT NULL AUTO_INCREMENT,
+	sid bigint NOT NULL,
+	start_time datetime,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (siid)
+);
+
+
+CREATE TABLE Services
+(
+	sid bigint NOT NULL AUTO_INCREMENT,
+	-- 公司的唯一标识
+	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	-- 服务名称
+	name varchar(50) COMMENT '服务名称',
+	description varchar(500) NOT NULL,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (sid)
 );
 
 

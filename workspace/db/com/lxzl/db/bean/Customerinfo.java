@@ -26,6 +26,9 @@ public class Customerinfo implements Serializable {
 	/** 密码. */
 	private String pwd;
 
+	/** 图片路径. */
+	private String imgUrl;
+
 	/** 手机号. */
 	private String phone;
 
@@ -118,6 +121,25 @@ public class Customerinfo implements Serializable {
 	 */
 	public String getPwd() {
 		return this.pwd;
+	}
+
+	/**
+	 * Set the 图片路径.
+	 * 
+	 * @param imgUrl
+	 *            图片路径
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	/**
+	 * Get the 图片路径.
+	 * 
+	 * @return 图片路径
+	 */
+	public String getImgUrl() {
+		return this.imgUrl;
 	}
 
 	/**

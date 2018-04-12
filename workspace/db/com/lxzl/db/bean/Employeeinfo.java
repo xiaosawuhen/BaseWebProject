@@ -18,10 +18,13 @@ public class Employeeinfo implements Serializable {
 	private Long eiid;
 
 	/** 职工信息表. */
-	private Employee eidemployee;
+	private Employee employee;
 
 	/** alias_name. */
 	private String aliasName;
+
+	/** 图片路径. */
+	private String imgUrl;
 
 	/** 密码. */
 	private String pwd;
@@ -66,11 +69,11 @@ public class Employeeinfo implements Serializable {
 	/**
 	 * Set the 职工信息表.
 	 * 
-	 * @param eidemployee
+	 * @param employee
 	 *            职工信息表
 	 */
-	public void setEidemployee(Employee eidemployee) {
-		this.eidemployee = eidemployee;
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	/**
@@ -78,8 +81,8 @@ public class Employeeinfo implements Serializable {
 	 * 
 	 * @return 职工信息表
 	 */
-	public Employee getEidemployee() {
-		return this.eidemployee;
+	public Employee getEmployee() {
+		return this.employee;
 	}
 
 	/**
@@ -99,6 +102,25 @@ public class Employeeinfo implements Serializable {
 	 */
 	public String getAliasName() {
 		return this.aliasName;
+	}
+
+	/**
+	 * Set the 图片路径.
+	 * 
+	 * @param imgUrl
+	 *            图片路径
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	/**
+	 * Get the 图片路径.
+	 * 
+	 * @return 图片路径
+	 */
+	public String getImgUrl() {
+		return this.imgUrl;
 	}
 
 	/**

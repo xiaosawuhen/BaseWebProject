@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxzl.db.dao.NewsinfoMapper" >
+	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Newsinfo">  
+	</select>
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.NewsBean">
+		UPDATE newsinfo
+		   SET img_url = #{imgUrl},
+		   	   update_time = now()
+		 WHERE niid = #{niid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.NewsBean">
+		INSERT INTO
+			newsinfo(
+				nid,
+				img_url,
+				create_time
+			) VALUES (
+				#{nid},
+				#{imgUrl},
+				now()
+			)
+	</insert>
+	<insert id="insertBatch" parameterType="list">
+		INSERT INTO
+			newsinfo(
+				nid,
+				img_url,
+				create_time
+			) VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.nid},
+				#{item.imgUrl},
+				now()
+			)
+		</foreach>
+	</insert>
+	<delete id="deleteById">
+		DELETE 
+		  FROM projectinfo
+		 WHERE niid = #{niid}
+	</delete>
+</mapper>
+

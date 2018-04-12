@@ -20,6 +20,9 @@ public class Projectinfo implements Serializable {
 	/** 项目表. */
 	private Project project;
 
+	/** 图片路径. */
+	private String imgUrl;
+
 	/** 开始时间. */
 	private Date startTime;
 
@@ -74,6 +77,25 @@ public class Projectinfo implements Serializable {
 	 */
 	public Project getProject() {
 		return this.project;
+	}
+
+	/**
+	 * Set the 图片路径.
+	 * 
+	 * @param imgUrl
+	 *            图片路径
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	/**
+	 * Get the 图片路径.
+	 * 
+	 * @return 图片路径
+	 */
+	public String getImgUrl() {
+		return this.imgUrl;
 	}
 
 	/**

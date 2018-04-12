@@ -17,7 +17,7 @@ public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** ID. */
-	private Long edi;
+	private Long eid;
 
 	/** 姓名. */
 	private String name;
@@ -63,11 +63,11 @@ public class Employee implements Serializable {
 	/**
 	 * Set the ID.
 	 * 
-	 * @param edi
+	 * @param eid
 	 *            ID
 	 */
-	public void setEdi(Long edi) {
-		this.edi = edi;
+	public void setEid(Long eid) {
+		this.eid = eid;
 	}
 
 	/**
@@ -75,8 +75,8 @@ public class Employee implements Serializable {
 	 * 
 	 * @return ID
 	 */
-	public Long getEdi() {
-		return this.edi;
+	public Long getEid() {
+		return this.eid;
 	}
 
 	/**
@@ -326,7 +326,7 @@ public class Employee implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((edi == null) ? 0 : edi.hashCode());
+		result = prime * result + ((eid == null) ? 0 : eid.hashCode());
 		return result;
 	}
 
@@ -345,11 +345,11 @@ public class Employee implements Serializable {
 			return false;
 		}
 		Employee other = (Employee) obj;
-		if (edi == null) {
-			if (other.edi != null) {
+		if (eid == null) {
+			if (other.eid != null) {
 				return false;
 			}
-		} else if (!edi.equals(other.edi)) {
+		} else if (!eid.equals(other.eid)) {
 			return false;
 		}
 		return true;
