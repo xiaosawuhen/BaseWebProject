@@ -26,7 +26,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
                       <ul class="sub">
-                          <li><a class="" href="company/credential">公司证书</a></li>                          
+                          <li><a class="" href="company/credential">证书平面图</a></li>   
+                          <li><a class="" href="company/credential/list">证书检索</a></li>     
+                          <li><a class="" href="company/credential/add">证书添加</a></li>                       
                       </ul>
                   </li>    
 				  <li class="sub-menu">

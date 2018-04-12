@@ -55,7 +55,7 @@
 	  		<mvc:mapping path="/**/*"/>
 	  		<mvc:exclude-mapping path="/static/*"/>
 <!-- 	        定义在 mvc:interceptor 下面的 Interceptor，表示对特定的请求进行拦截   -->
-	  		<bean class="com.lxzl.intercptor.HttpHeaderInterceptor"/>
+	  		<bean class="com.lxzl.intercptor.SessionAttributeInterceptor"/>
 	  	</mvc:interceptor>
 	</mvc:interceptors>  
 
@@ -117,4 +117,18 @@
 		</property>
 	</bean>
 	<!-- jackson 转换器配置 end -->
+	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<!-- <value>classpath*:/spring/jdbc.properties</value> -->
+				<value>/WEB-INF/config/jdbc.properties</value>
+				<value>/WEB-INF/config/project.properties</value>
+			</list>
+		</property>
+		<!-- <property name="location" value="/WEB-INF/config/jdbc.properties" 
+			/> -->
+	</bean>
 </beans>

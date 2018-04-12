@@ -18,7 +18,7 @@ public interface EmployeeService {
 
 	Integer updateById(EmployeeBean employeeBean);
 
-	Integer insert(EmployeeBean employeeBean);
+	Integer insert(EmployeeBean employeeBean, Long cid);
 
 	Integer deleteById(Long long1);
 

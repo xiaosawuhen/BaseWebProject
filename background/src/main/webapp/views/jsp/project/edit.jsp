@@ -43,6 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="static/css/style-responsive.css" rel="stylesheet" />
 	<link href="static/css/xcharts.min.css" rel=" stylesheet">	
 	<link href="static/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	<link href="static/css/jquery.datetimepicker.css" rel="stylesheet">
+	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="static/js/html5shiv.js"></script>
@@ -82,6 +84,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               <div class="form">
                                   <form class="form-validate form-horizontal" id="projectForm" method="post" action="project/update">
                                       <input class="form-control" id="pid" name="pid" type="hidden" value="${project.pid}" />
+                                      <div class="form-group imageUploadArea">
+                                          <label for="cname" class="control-label col-lg-2">项目图片<span class="required">*</span></label>
+                                          <div class="col-lg-10">
+											  <img id="projecctImg" class="user-image-project" src="${project.imgUrl}" >
+                                              <label>点击图片区域选择上传图片</label>
+											  <input id="imgFile" name="imgFile" class="user-image-input" accept="image/*" type="file"/>
+											  <input id="imgUrl" name="imgUrl" type="hidden" value="${project.imgUrl}"/>
+											  <button id="imgUpload" class="btn " type="button">使用新图片</button>
+                                          </div>
+                                      </div>
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">项目名称<span class="required">*</span></label>
                                           <div class="col-lg-10">
@@ -91,13 +103,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                       <div class="form-group ">
                                           <label for="cemail" class="control-label col-lg-2">开始时间<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="startTime" type="email" name="startTime" value="${project.startTime}" required />
+                                              <input class="form-control " id="startTime" type="text" name="startTime" value="${project.startTimeStr}" required />
                                           </div>
                                       </div>
                                       <div class="form-group ">
                                           <label for="curl" class="control-label col-lg-2">结束时间</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="endTime" type="text" name="endTime" value="${project.endTime}" />
+                                              <input class="form-control " id="endTime" type="text" name="endTime" value="${project.endTimeStr}" />
                                           </div>
                                       </div>
                                       <div class="form-group ">
@@ -130,6 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="static/js/jquery.js"></script>
 	<script src="static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="static/js/jquery-1.8.3.min.js"></script>
+    <script src="static/js/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- bootstrap -->
     <script src="static/js/bootstrap.min.js"></script>
@@ -169,6 +182,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script>
 
   $(document).ready(function() {
+
+	  $.imageUploadControl("projecctImg","imgFile","imgUrl","imgUpload","project/uploadImg");
+	  
       $("#projectForm").on("submit", function(){
     	  var form = this;
     	  modalConfirm("是否确认修改信息",function(){
@@ -195,6 +211,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	  })
         return false;
       });
+
+  	$('#startTime').datetimepicker(
+  			{lang:'ch',
+  				timepicker:false,
+//   			format:'Y-m-d H:i'});
+  			format:'Y-m-d'});
+  	$('#endTime').datetimepicker(
+  			{lang:'ch',
+  				timepicker:false,
+  			format:'Y-m-d',
+  			validateOnBlur: false
+  			});
   });
       //knob
       $(function() {

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.lxzl.db.bean.Credential;
 import com.lxzl.db.dao.CredentialMapper;
+import com.lxzl.db.transfor.bean.CredentialBean;
 import com.lxzl.service.CredentialService;
 
 @Service("credentialService")
@@ -23,13 +24,28 @@ public class CredentialServiceImpl implements CredentialService {
 	}
 
 	@Transactional
-	public Integer insert(Credential credential) {
-		return credentialMapper.insert(credential);
-	}
-
-	@Transactional
 	public List<Credential> select(Map<String, String> map) {
 		return credentialMapper.select(map);
+	}
+
+	public List<CredentialBean> selectByCnt(Map<String, Object> paramMap) {
+		return credentialMapper.selectByCnt(paramMap);
+	}
+
+	public Integer insert(CredentialBean credentialBean) {
+		return credentialMapper.insert(credentialBean);
+	}
+
+	public CredentialBean selectById(Long crid) {
+		return credentialMapper.selectById(crid);
+	}
+
+	public Integer updateById(CredentialBean credentialBean) {
+		return credentialMapper.updateById(credentialBean);
+	}
+
+	public Integer deleteById(Integer crid) {
+		return credentialMapper.deleteById(crid);
 	}
 
 }

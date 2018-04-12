@@ -5,6 +5,20 @@
 	</select>
 	<insert id="insert" parameterType="com.lxzl.db.bean.Companyemployeeinfo">
 	</insert>
+	
+	<insert id="insertByEidCid" >
+		INSERT INTO
+			companyemployeeinfo(
+				eid,
+				cid,
+				create_time
+			) VALUES (
+				#{eid},
+				#{cid},
+				now()
+			)
+	</insert>
+	
 	<insert id="insertBatch" parameterType="list">
 		INSERT INTO
 			USER(

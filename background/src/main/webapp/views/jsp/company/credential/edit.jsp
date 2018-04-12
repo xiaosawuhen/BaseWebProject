@@ -43,6 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="static/css/style-responsive.css" rel="stylesheet" />
 	<link href="static/css/xcharts.min.css" rel=" stylesheet">	
 	<link href="static/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+	<link href="static/css/jquery.datetimepicker.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="static/js/html5shiv.js"></script>
@@ -80,38 +81,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           </header>
                           <div class="panel-body">
                               <div class="form">
-                                  <form class="form-validate form-horizontal" id="employeeForm" method="post" action="employee/update">
-                                      <input class="form-control" id="eid" name="eid" type="hidden" value="${employee.eid}"/>
-                                      <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">员工名称<span class="required">*</span></label>
+                                  <form class="form-validate form-horizontal" id="credentialForm" method="post" action="company/credential/update">
+                                      <input class="form-control" id="crid" name="crid" type="hidden" value="${credential.crid}"/>
+                                      <div class="form-group imageUploadArea">
+                                          <label for="cname" class="control-label col-lg-2">证书图片<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="name" name="name" value="${employee.name}" minlength="5" type="text" required />
+											  <img id="credentialImg" class="user-image" src="${credential.imgUrl}" >
+                                              <label>点击图片区域选择上传图片</label>
+											  <input id="imgFile" name="imgFile" class="user-image-input" accept="image/*" type="file"/>
+											  <input id="imgUrl" name="imgUrl" type="hidden" value="${credential.imgUrl}"/>
+											  <button id="imgUpload" class="btn " type="button">使用新图片</button>
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="cemail" class="control-label col-lg-2">员工性别<span class="required">*</span></label>
+                                          <label for="cname" class="control-label col-lg-2">证书名称<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="sex" type="text" name="sex" value="${employee.sex}" required />
+                                              <input class="form-control" id="name" name="name" value="${credential.name}" minlength="5" type="text" required />
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="curl" class="control-label col-lg-2">员工账号</label>
+                                          <label for="cemail" class="control-label col-lg-2">证书到期日<span class="required">*</span></label>
                                           <div class="col-lg-10">
-                                              <input class="form-control " id="aliasName" type="text" name="aliasName" value="${employee.aliasName}"/>
+                                              <input class="form-control " id="endDate" type="text" name="endDate" value="${credential.endDateStr}" required />
                                           </div>
                                       </div>
                                       <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">员工电话<span class="required">*</span></label>
+                                          <label for="ccomment" class="control-label col-lg-2">证书描述</label>
                                           <div class="col-lg-10">
-                                              <input class="form-control" id="phone" name="phone" value="${employee.phone}" minlength="5" type="text" required />
+                                              <textarea class="form-control " id="description" name="description" required >${credential.description}</textarea>
                                           </div>
-                                      </div>                                      
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">员工邮箱</label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="email" type="email" name="email" value="${employee.email}" />
-                                          </div>
-                                      </div>                               
+                                      </div>
                                       <div class="form-group">
                                           <div class="col-lg-offset-2 col-lg-10">
                                               <button class="btn btn-primary" type="submit">保存</button>
@@ -129,24 +128,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           </section>
       </section>
       <!--main content end-->
-      <!-- 确认消息模态框 -->
-	<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop='static'>
-		<div class="modal-dialog" style="width:500px;">
-			<div class="modal-content">
-				<div class="modal-header" style="font-size:16px; color:#fff; background-color:#0054a6; padding:9px;">
-					<button type="button" class="close" data-dismiss="modal" style="color:#fff; opacity:1;" aria-hidden="true">&times;</button>
-					<div>确认消息</div>
-				</div>
-				<div class="modal-body">
-					<div id="modalInfo" style="text-align:center; margin:10px 0;"></div>
-				</div>
-				<div class="cct-popup-content-bjbz-foot">
-					<button id="okBtn" type="button" style="margin-right:0px;width: 100px;margin-left:260px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">OK</button>
-					<button id="cancleBtn" type="button" style="margin-right:0px;margin-left:10px;width: 100px;" class="cct-popup-content-bjbz-btn" data-dismiss="modal">Cancel</button>
-				</div>
-			</div>
-		</div>
-	</div>
   </section>
   <!-- container section start -->
 
@@ -154,6 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="static/js/jquery.js"></script>
 	<script src="static/js/jquery-ui-1.10.4.min.js"></script>
     <script src="static/js/jquery-1.8.3.min.js"></script>
+    <script src="static/js/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript" src="static/js/jquery-ui-1.9.2.custom.min.js"></script>
     <!-- bootstrap -->
     <script src="static/js/bootstrap.min.js"></script>
@@ -194,29 +176,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   $(document).ready(function() {
 
-		function modalConfirm(data,callback){
-			$("#confirm #modalInfo").text(data);
-			$("#confirm").modal('show');
-			
-			$("#confirm #okBtn").unbind("click");
-			if( typeof callback != "undefine") {
-				$("#confirm #okBtn").bind("click", callback);
-			}
-		}
-	  jQuery.prototype.serializeObject=function(){  
-	      var obj=new Object();  
-	      $.each(this.serializeArray(),function(index,param){  
-	          if(!(param.name in obj)){  
-	              obj[param.name]=param.value;  
-	          }  
-	      });  
-	      return obj;  
-	  };  
+	  $.imageUploadControl("credentialImg","imgFile","imgUrl","imgUpload","company/credential/uploadImg");
+
+	  	$('#endDate').datetimepicker(
+	  			{lang:'ch',
+	  				timepicker:false,
+//	   			format:'Y-m-d H:i'});
+	  			format:'Y-m-d'});
 	  
-      $("#employeeForm").on("submit", function(){
+      $("#credentialForm").on("submit", function(){
     	  var form = this;
     	  modalConfirm("是否确认修改信息",function(){
-   		   var dataPara = JSON.stringify($("#employeeForm").serializeObject()); 
+   		   var dataPara = JSON.stringify($("#credentialForm").serializeObject()); 
    		   $.ajax({
    		      url : form.action,
    		      type : form.method,

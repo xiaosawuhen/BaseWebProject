@@ -80,6 +80,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <div class="panel-body">
                               <div class="form">
                                   <form class="form-validate form-horizontal" id="employeeForm" method="post" action="employee/add/submit">
+                                      <div class="form-group imageUploadArea">
+                                          <label for="cname" class="control-label col-lg-2">员工图片<span class="required">*</span></label>
+                                          <div class="col-lg-10">
+											  <img id="employeeImg" class="user-image" src="${employee.imgUrl}" >
+                                              <label>点击图片区域选择上传图片</label>
+											  <input id="imgFile" name="imgFile" class="user-image-input" accept="image/*" type="file"/>
+											  <input id="imgUrl" name="imgUrl" type="hidden" value="${employee.imgUrl}"/>
+											  <button id="imgUpload" class="btn " type="button">使用新图片</button>
+                                          </div>
+                                      </div>
                                       <div class="form-group ">
                                           <label for="cname" class="control-label col-lg-2">员工名称<span class="required">*</span></label>
                                           <div class="col-lg-10">
@@ -191,6 +201,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script>
 
   $(document).ready(function() {
+	  // 图片上传
+	  $.imageUploadControl("employeeImg","imgFile","imgUrl","imgUpload","employee/uploadImg");
+	  
       $("#employeeForm").on("submit", function(){
     	  var form = this;
     	  modalConfirm("是否确认修改信息",function(){

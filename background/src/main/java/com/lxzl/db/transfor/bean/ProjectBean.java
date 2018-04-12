@@ -15,6 +15,9 @@ public class ProjectBean implements Serializable {
 	/** PID. */
 	private Long pid;
 
+	/** CID. */
+	private Long cid;
+
 	/** �??称. */
 	private String name;
 
@@ -45,6 +48,20 @@ public class ProjectBean implements Serializable {
 	 */
 	public void setPid(Long pid) {
 		this.pid = pid;
+	}
+
+	/**
+	 * @return the cid
+	 */
+	public Long getCid() {
+		return cid;
+	}
+
+	/**
+	 * @param cid the cid to set
+	 */
+	public void setCid(Long cid) {
+		this.cid = cid;
 	}
 
 	/**

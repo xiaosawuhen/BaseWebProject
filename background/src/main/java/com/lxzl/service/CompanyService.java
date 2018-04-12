@@ -21,4 +21,6 @@ public interface CompanyService {
 	Integer updateById(CompanyBean company);
 
 	CompanyBean selectById(Long id);
+
+	Company selectByUserName(String username);
 }

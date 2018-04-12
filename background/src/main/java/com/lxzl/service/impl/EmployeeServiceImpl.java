@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lxzl.db.bean.Employee;
+import com.lxzl.db.dao.CompanyemployeeinfoMapper;
 import com.lxzl.db.dao.EmployeeMapper;
 import com.lxzl.db.dao.EmployeeinfoMapper;
 import com.lxzl.db.transfor.bean.EmployeeBean;
+import com.lxzl.service.CompanyemployeeinfoService;
 import com.lxzl.service.EmployeeService;
 
 @Service("employeeService")
@@ -22,6 +24,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	EmployeeinfoMapper employeeinfoMapper;
+	
+	@Autowired
+	CompanyemployeeinfoMapper companyemployeeinfoMapper;
 
 	@Transactional
 	public Integer insertBatch(List<EmployeeBean> list) {
@@ -54,10 +59,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Transactional
-	public Integer insert(EmployeeBean employeeBean) {
+	public Integer insert(EmployeeBean employeeBean, Long cid) {
 		Integer cnt = employeeMapper.insert(employeeBean);
 		
 		if(cnt > 0) {
+			Integer ceiCnt = companyemployeeinfoMapper.insertByEidCid(employeeBean.getEid(), cid);
+			
 			Integer eiCnt = employeeinfoMapper.insert(employeeBean);
 			return eiCnt;
 		}

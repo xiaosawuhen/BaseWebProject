@@ -4,6 +4,16 @@
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Company">  
 	</select>
 	
+	<select id="selectByUserName" resultType="com.lxzl.db.bean.Company">  
+		SELECT c.cid
+		  FROM company c
+		  LEFT JOIN companyemployeeinfo epi
+		         ON epi.cid = c.cid
+		  LEFT JOIN employeeinfo ei
+		         ON ei.eid = epi.eid
+		 WHERE ei.alias_name = #{username}
+	</select>
+	
 	<select id="getInfoByName" resultType="com.lxzl.db.transfor.bean.CompanyBean">  
 		SELECT c.`name` AS name,
 					 c.description AS description,

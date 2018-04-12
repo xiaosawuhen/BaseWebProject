@@ -66,4 +66,8 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyMapper.selectById(id);
 	}
 
+	public Company selectByUserName(String username) {
+		return companyMapper.selectByUserName(username);
+	}
+
 }

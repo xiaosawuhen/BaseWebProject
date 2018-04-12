@@ -21,4 +21,6 @@ public interface CompanyMapper {
 	Integer updateById(CompanyBean company);
 
 	CompanyBean selectById(@Param("id")Long id);
+
+	Company selectByUserName(@Param("username")String username);
 }

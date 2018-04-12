@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h3 class="page-header"><i class="fa fa-files-o"></i> 员工信息管理</h3>
 					<ol class="breadcrumb">
 						<li><i class="fa fa-home"></i><a href="index.html">后台管理</a></li>
-						<li><i class="fa fa-laptop"></i>员工信息管理</li>
+						<li><i class="fa fa-laptop"></i>证书信息管理</li>
 					</ol>
 				</div>
 			</div>
@@ -79,12 +79,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                             删选条件
+                             筛选条件
                           </header>
                           <div class="panel-body">
                               <form id="selectContidionForm" class="form-horizontal " method="post">
                                   <div class="form-group">
-                                      <label class="col-sm-1 control-label">姓名</label>
+                                      <label class="col-sm-1 control-label">名称</label>
                                       <div class="col-sm-2">
                                           <input type="text" class="form-control" id="nameCon" name="nameCon">
                                       </div>
@@ -99,19 +99,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   <div class="col-lg-12">
                       <section class="panel">
                           <header class="panel-heading">
-                              员工列表
+                              证书列表
                           </header>
                           <div class="table-responsive">
-                            <table id="employeeTable" class="table">
+                            <table id="credentialTable" class="table">
                               <thead>
                                 <tr>
                                   <th>#</th>
                                   <th>ID</th>
-                                  <th>姓名</th>
-                                  <th>性别</th>
-                                  <th>电话</th>
-                                  <th>邮箱</th>
-                                  <th>账号</th>
+                                  <th>证书名称</th>
+                                  <th>证书到期日</th>
+                                  <th>证书描述</th>
                                 </tr>
                               </thead>
                             </table>
@@ -176,7 +174,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	$(document).ready(function() {
 		//var vdata = [];
-	    var employeeTable = $('#employeeTable').DataTable( {
+	    var employeeTable = $('#credentialTable').DataTable( {
 	        dom: 'Bfrtip',    // 动态控制显示列按钮
 	        searching:false,
 	        info:false,
@@ -197,7 +195,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    
 	    var searchList = function(info) {
    		   $.ajax({
-   		      url : "employee/listByCondition",
+   		      url : "company/credential/listByCondition",
    		      type : "post",
    		      data : JSON.stringify(info),//可能会出现后台接收到的参数值为null的情况，原因是form.js的源码不全，没有data这个参数，需要重新下载官网的源码。
    		      dataType : "json",
@@ -212,21 +210,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 		$.each(dataList, function(i, item){
                 			var arrary = new Array(7);
                 			arrary[0] = (i);
-                			arrary[1] = ((dataList[i].eid!=null)?dataList[i].eid:"");
+                			arrary[1] = ((dataList[i].crid!=null)?dataList[i].crid:"");
 
                   			var name = ((dataList[i].name!=null)?dataList[i].name:"");
     		    			var nameHtml = "<span ";
-    		    			nameHtml += "eid='"+dataList[i].eid+"' >";
-    		    			nameHtml += "<a class=\"employee-name\" href='javascript:void(0);' onclick='detailIfno(this)'";
+    		    			nameHtml += "crid='"+dataList[i].crid+"' >";
+    		    			nameHtml += "<a class=\"credential-name\" href='javascript:void(0);' onclick='detailIfno(this)'";
     		    			nameHtml += ">"+name+"</a></span>";
                   			arrary[2] = nameHtml;
-                			arrary[3] = ((dataList[i].sex!=null)?dataList[i].sex:"");
-                			arrary[4] = ((dataList[i].phone!=null)?dataList[i].phone:"");
-                			arrary[5] = ((dataList[i].email!=null)?dataList[i].email:"");
-                			arrary[6] = ((dataList[i].aliasName!=null)?dataList[i].aliasName:"");
+                			arrary[3] = ((dataList[i].endDateStr!=null)?dataList[i].endDateStr:"");
+                			arrary[4] = ((dataList[i].description!=null)?dataList[i].description:"");
                 			tableData[i] = arrary;
                 		});
-                		employeeTable = $("#employeeTable").dataTable();   
+                		employeeTable = $("#credentialTable").dataTable();   
              	        oSettings = employeeTable.fnSettings(); 
             	        employeeTable.fnClearTable(this);
             	        employeeTable.fnAddData(tableData);
@@ -299,8 +295,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 	function detailIfno(which){
-		var eid = $(which).parent().attr("eid");
-		window.location.href = "employee/edit?eid=" + eid;
+		var crid = $(which).parent().attr("crid");
+		window.location.href = "company/credential/edit?crid=" + crid;
 	}
 
   </script>

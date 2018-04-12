@@ -1,5 +1,6 @@
 package com.lxzl.controller.employee;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.lxzl.ajax.AjaxResultData;
 import com.lxzl.ajax.AjaxResultEnum;
+import com.lxzl.constant.SessionConstant;
 import com.lxzl.db.transfor.bean.EmployeeBean;
 import com.lxzl.service.EmployeeService;
+import com.lxzl.service.upload.ImageUploadService;
 
 @Controller
 @RequestMapping("/employee")
@@ -30,6 +34,9 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	ImageUploadService imageUploadService;
 	
 	@RequestMapping("/list")
 	public ModelAndView list(){
@@ -60,10 +67,12 @@ public class EmployeeController {
 	
 	@RequestMapping("/add/submit")
 	@ResponseBody
-	public AjaxResultData<String> submit(@RequestBody EmployeeBean employeeBean){
+	public AjaxResultData<String> submit(@RequestBody EmployeeBean employeeBean, HttpServletRequest request){
 
 		employeeBean.setPassword(DigestUtils.md5Hex("123456".getBytes()));
-		Integer cnt = employeeService.insert(employeeBean);
+		
+		Long cid = (Long)request.getSession().getAttribute(SessionConstant.COMPANY_ID);
+		Integer cnt = employeeService.insert(employeeBean, cid);
 		
 		return new AjaxResultData<String>(AjaxResultEnum.SUCCESS,"success");
 	}
@@ -104,9 +113,11 @@ public class EmployeeController {
 	public AjaxResultData<Map<String, String>> uploadImg(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam MultipartFile file, String fileType) throws IOException {
 		Map<String, String> result = new HashMap<String, String>();
-		result.put("code", "200");
 		
-		result.put("image", "test");
+		String imgUrl = imageUploadService.uploadFile(file, request);
+
+		result.put("code", "200");
+		result.put("image", imgUrl);
 
 		return new AjaxResultData<Map<String, String>>(AjaxResultEnum.SUCCESS,result);
 	}

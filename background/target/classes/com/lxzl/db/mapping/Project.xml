@@ -9,8 +9,10 @@
 				p.pid AS pid,
 				pi.img_url AS imgUrl,
 				pi.start_time AS startTime,
-      			DATE_FORMAT(pi.start_time,'%Y-%m-%d %H:%i') as startTimeStr,
-      			DATE_FORMAT(pi.end_time,'%Y-%m-%d %H:%i') as endTimeStr,
+<!--       			DATE_FORMAT(pi.start_time,'%Y-%m-%d %H:%i') as startTimeStr, -->
+<!--       			DATE_FORMAT(pi.end_time,'%Y-%m-%d %H:%i') as endTimeStr, -->
+      			DATE_FORMAT(pi.start_time,'%Y-%m-%d') as startTimeStr,
+      			DATE_FORMAT(pi.end_time,'%Y-%m-%d') as endTimeStr,
 				pi.end_time AS endTime
 		  FROM project p
 		  LEFT JOIN projectinfo pi
@@ -23,8 +25,8 @@
 				p.pid AS pid,
 				pi.img_url AS imgUrl,
 				pi.start_time AS startTime,
-      			DATE_FORMAT(pi.start_time,'%Y-%m-%d %H:%i') as startTimeStr,
-      			DATE_FORMAT(pi.end_time,'%Y-%m-%d %H:%i') as endTimeStr,
+      			DATE_FORMAT(pi.start_time,'%Y-%m-%d') as startTimeStr,
+      			DATE_FORMAT(pi.end_time,'%Y-%m-%d') as endTimeStr,
 				pi.end_time AS endTime
 		  FROM project p
 		  LEFT JOIN projectinfo pi
@@ -41,10 +43,12 @@
 	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.ProjectBean" useGeneratedKeys="true" keyProperty="pid">
 		INSERT INTO
 			project(
+				cid,
 				name,
 				description,
 				create_time
 			) VALUES (
+				#{cid},
 				#{name},
 				#{description},
 				now()

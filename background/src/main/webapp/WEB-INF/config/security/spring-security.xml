@@ -75,7 +75,7 @@
 		class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository">
 	</b:bean>
 
-	<b:bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+	<b:bean id="authenticationSuccessHandler" class="com.lxzl.security.success.SuccessHandler">
 		<b:property name="defaultTargetUrl" value="/index">
 		</b:property>
 	</b:bean>

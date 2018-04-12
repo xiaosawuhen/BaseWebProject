@@ -43,7 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="static/css/style-responsive.css" rel="stylesheet" />
 	<link href="static/css/xcharts.min.css" rel=" stylesheet">	
 	<link href="static/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-	<link href="static/css/userStyle.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
     <!--[if lt IE 9]>
       <script src="static/js/html5shiv.js"></script>
