@@ -3,6 +3,8 @@ package com.lxzl.db.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.lxzl.db.bean.Serviceinfo;
 import com.lxzl.db.transfor.bean.ServicesBean;
 
@@ -16,6 +18,6 @@ public interface ServiceinfoMapper {
 
 	Integer updateById(ServicesBean servicesBean);
 
-	Integer deleteById(Long sid);
+	Integer deleteById(@Param("sid")Long sid);
 
 }

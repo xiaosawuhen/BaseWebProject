@@ -36,6 +36,7 @@ public class ServicesServiceImpl implements ServicesService {
 		return servicesMapper.selectByCnt(paramMap);
 	}
 
+	@Transactional
 	public Integer insert(ServicesBean servicesBean) {
 
 		Integer cnt = servicesMapper.insert(servicesBean);
@@ -52,6 +53,7 @@ public class ServicesServiceImpl implements ServicesService {
 		return servicesMapper.selectById(sid);
 	}
 
+	@Transactional
 	public Integer updateById(ServicesBean servicesBean) {
 
 		Integer cnt = servicesMapper.updateById(servicesBean);
@@ -64,6 +66,7 @@ public class ServicesServiceImpl implements ServicesService {
 		return 0;
 	}
 
+	@Transactional
 	public Integer deleteById(Long sid) {
 
 		Integer cnt = servicesMapper.deleteById(sid);

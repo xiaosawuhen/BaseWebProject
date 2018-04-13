@@ -36,6 +36,7 @@ public class NewsServiceImpl implements NewsService {
 		return newsMapper.selectByCnt(paramMap);
 	}
 
+	@Transactional
 	public Integer insert(NewsBean newsBean) {
 
 		Integer cnt = newsMapper.insert(newsBean);
@@ -52,6 +53,7 @@ public class NewsServiceImpl implements NewsService {
 		return newsMapper.selectById(nid);
 	}
 
+	@Transactional
 	public Integer updateById(NewsBean newsBean) {
 
 		Integer cnt = newsMapper.updateById(newsBean);
@@ -64,6 +66,7 @@ public class NewsServiceImpl implements NewsService {
 		return 0;
 	}
 
+	@Transactional
 	public Integer deleteById(Long nid) {
 
 		Integer cnt = newsMapper.deleteById(nid);

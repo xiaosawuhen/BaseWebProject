@@ -2,12 +2,16 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
 
+DROP TABLE IF EXISTS CarouselInfo;
+DROP TABLE IF EXISTS Carousel;
 DROP TABLE IF EXISTS CompanyEmployeeInfo;
 DROP TABLE IF EXISTS CompanyInfo;
 DROP TABLE IF EXISTS Credential;
 DROP TABLE IF EXISTS CustomerCompanyInfo;
 DROP TABLE IF EXISTS NewsInfo;
 DROP TABLE IF EXISTS News;
+DROP TABLE IF EXISTS PartnerInfo;
+DROP TABLE IF EXISTS Partners;
 DROP TABLE IF EXISTS ProjectEmployeeInfo;
 DROP TABLE IF EXISTS ProjectInfo;
 DROP TABLE IF EXISTS Project;
@@ -31,6 +35,35 @@ DROP TABLE IF EXISTS EmployeeStatus;
 
 
 /* Create Tables */
+
+CREATE TABLE Carousel
+(
+	caid bigint NOT NULL AUTO_INCREMENT,
+	-- 公司的唯一标识
+	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	name varchar(50),
+	short_description varchar(500),
+	description text,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (caid)
+);
+
+
+CREATE TABLE CarouselInfo
+(
+	caiid bigint NOT NULL AUTO_INCREMENT,
+	caid bigint NOT NULL,
+	img_url varchar(200),
+	link_url varchar(200),
+	priority int,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (caiid)
+);
+
 
 CREATE TABLE Company
 (
@@ -326,6 +359,32 @@ CREATE TABLE NewsInfo
 );
 
 
+CREATE TABLE PartnerInfo
+(
+	piid bigint NOT NULL AUTO_INCREMENT,
+	pid bigint NOT NULL,
+	img_url varchar(200),
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (piid)
+);
+
+
+CREATE TABLE Partners
+(
+	pid bigint NOT NULL AUTO_INCREMENT,
+	-- 公司的唯一标识
+	cid bigint NOT NULL COMMENT '公司的唯一标识',
+	name varchar(50),
+	description text,
+	-- 创建日期
+	create_time datetime COMMENT '创建日期',
+	update_time datetime,
+	PRIMARY KEY (pid)
+);
+
+
 CREATE TABLE Project
 (
 	pid bigint NOT NULL AUTO_INCREMENT,
@@ -376,6 +435,7 @@ CREATE TABLE ServiceInfo
 (
 	siid bigint NOT NULL AUTO_INCREMENT,
 	sid bigint NOT NULL,
+	img_url varchar(100),
 	start_time datetime,
 	-- 创建日期
 	create_time datetime COMMENT '创建日期',

@@ -31,6 +31,9 @@ public class Company implements Serializable {
 	/** 更新日期. */
 	private Date updateTime;
 
+	/** The set of 公司展示画布表. */
+	private Set<Carousel> carouselSet;
+
 	/** The set of 公司职工信息表. */
 	private Set<Companyemployeeinfo> companyemployeeinfoSet;
 
@@ -46,6 +49,9 @@ public class Company implements Serializable {
 	/** The set of 新闻表. */
 	private Set<News> newsSet;
 
+	/** The set of 合作伙伴表. */
+	private Set<Partners> partnersSet;
+
 	/** The set of 项目表. */
 	private Set<Project> projectSet;
 
@@ -56,11 +62,13 @@ public class Company implements Serializable {
 	 * Constructor.
 	 */
 	public Company() {
+		this.carouselSet = new HashSet<Carousel>();
 		this.companyemployeeinfoSet = new HashSet<Companyemployeeinfo>();
 		this.companyinfoSet = new HashSet<Companyinfo>();
 		this.credentialSet = new HashSet<Credential>();
 		this.customercompanyinfoSet = new HashSet<Customercompanyinfo>();
 		this.newsSet = new HashSet<News>();
+		this.partnersSet = new HashSet<Partners>();
 		this.projectSet = new HashSet<Project>();
 		this.servicesSet = new HashSet<Services>();
 	}
@@ -158,6 +166,35 @@ public class Company implements Serializable {
 	 */
 	public Date getUpdateTime() {
 		return this.updateTime;
+	}
+
+	/**
+	 * Set the set of the 公司展示画布表.
+	 * 
+	 * @param carouselSet
+	 *            The set of 公司展示画布表
+	 */
+	public void setCarouselSet(Set<Carousel> carouselSet) {
+		this.carouselSet = carouselSet;
+	}
+
+	/**
+	 * Add the 公司展示画布表.
+	 * 
+	 * @param carousel
+	 *            公司展示画布表
+	 */
+	public void addCarousel(Carousel carousel) {
+		this.carouselSet.add(carousel);
+	}
+
+	/**
+	 * Get the set of the 公司展示画布表.
+	 * 
+	 * @return The set of 公司展示画布表
+	 */
+	public Set<Carousel> getCarouselSet() {
+		return this.carouselSet;
 	}
 
 	/**
@@ -303,6 +340,35 @@ public class Company implements Serializable {
 	 */
 	public Set<News> getNewsSet() {
 		return this.newsSet;
+	}
+
+	/**
+	 * Set the set of the 合作伙伴表.
+	 * 
+	 * @param partnersSet
+	 *            The set of 合作伙伴表
+	 */
+	public void setPartnersSet(Set<Partners> partnersSet) {
+		this.partnersSet = partnersSet;
+	}
+
+	/**
+	 * Add the 合作伙伴表.
+	 * 
+	 * @param partners
+	 *            合作伙伴表
+	 */
+	public void addPartners(Partners partners) {
+		this.partnersSet.add(partners);
+	}
+
+	/**
+	 * Get the set of the 合作伙伴表.
+	 * 
+	 * @return The set of 合作伙伴表
+	 */
+	public Set<Partners> getPartnersSet() {
+		return this.partnersSet;
 	}
 
 	/**

@@ -20,6 +20,9 @@ public class Serviceinfo implements Serializable {
 	/** 服务表. */
 	private Services services;
 
+	/** 图片路径. */
+	private String imgUrl;
+
 	/** 服务开始时间. */
 	private Date startTime;
 
@@ -71,6 +74,25 @@ public class Serviceinfo implements Serializable {
 	 */
 	public Services getServices() {
 		return this.services;
+	}
+
+	/**
+	 * Set the 图片路径.
+	 * 
+	 * @param imgUrl
+	 *            图片路径
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	/**
+	 * Get the 图片路径.
+	 * 
+	 * @return 图片路径
+	 */
+	public String getImgUrl() {
+		return this.imgUrl;
 	}
 
 	/**

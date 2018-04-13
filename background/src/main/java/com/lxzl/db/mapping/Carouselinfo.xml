@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lxzl.db.dao.CarouselinfoMapper" >
+	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Carouselinfo">  
+	</select>
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.CarouselBean">
+		UPDATE carouselinfo
+		   SET link_url = #{linkUlr},
+			   img_url = #{imgUrl},
+		       priority = #{priority},
+		   	   update_time = now()
+		 WHERE caid = #{caid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.CarouselBean">
+		INSERT INTO
+			carouselinfo(
+				caid,
+				img_url,
+				link_url,
+				priority,
+				create_time
+			) VALUES (
+				#{caid},
+				#{imgUrl},
+				#{linkUlr},
+				#{priority},
+				now()
+			)
+	</insert>
+	<insert id="insertBatch" parameterType="list">
+		INSERT INTO
+			carouselinfo(
+				caid,
+				img_url,
+				link_url,
+				priority,
+				create_time
+			) VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.caid},
+				#{item.imgUrl},
+				#{item.linkUlr},
+				#{item.priority},
+				now()
+			)
+		</foreach>
+	</insert>
+	<delete id="deleteById">
+		DELETE 
+		  FROM carouselinfo
+		 WHERE caid = #{caid}
+	</delete>
+</mapper>
+

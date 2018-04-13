@@ -28,7 +28,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                       <ul class="sub">
                           <li><a class="" href="company/credential">证书平面图</a></li>   
                           <li><a class="" href="company/credential/list">证书检索</a></li>     
-                          <li><a class="" href="company/credential/add">证书添加</a></li>                       
+                          <li><a class="" href="company/credential/add">证书添加</a></li>      
+                          <li><a class="" href="carousel/list">首页轮播展示图管理</a></li>            
+                          <li><a class="" href="carousel/add">首页轮播展示图添加</a></li>                   
                       </ul>
                   </li>    
 				  <li class="sub-menu">
@@ -75,6 +77,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <li><a class="" href="news/add">新闻添加</a></li>
                       </ul>
                   </li> 
+				  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon_document_alt"></i>
+                          <span>合作伙伴信息管理</span>
+                          <span class="menu-arrow arrow_carrot-right"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="partner/list">合作伙伴查询</a></li>                          
+                          <li><a class="" href="partner/add">合作伙伴添加</a></li>
+                      </ul>
+                  </li>     
               </ul>
               <!-- sidebar menu end-->
           </div>
