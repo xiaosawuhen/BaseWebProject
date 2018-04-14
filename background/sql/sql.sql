@@ -10,10 +10,48 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2018-04-12 17:39:47
+Date: 2018-04-14 16:47:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for carousel
+-- ----------------------------
+DROP TABLE IF EXISTS `carousel`;
+CREATE TABLE `carousel` (
+  `caid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cid` bigint(20) NOT NULL COMMENT '公司的唯一标识',
+  `name` varchar(50) DEFAULT NULL,
+  `short_description` varchar(500) DEFAULT NULL,
+  `description` text,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`caid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of carousel
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for carouselinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `carouselinfo`;
+CREATE TABLE `carouselinfo` (
+  `caiid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `caid` bigint(20) NOT NULL,
+  `img_url` varchar(200) DEFAULT NULL,
+  `link_url` varchar(200) DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`caiid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of carouselinfo
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for company
@@ -402,6 +440,41 @@ CREATE TABLE `newsinfo` (
 -- ----------------------------
 INSERT INTO `newsinfo` VALUES ('1', '1', '/static/18/wnnnn/timg.jpg', '2018-04-12 17:10:44', '2018-04-12 17:37:30');
 INSERT INTO `newsinfo` VALUES ('2', '2', '/static/18/wnnnn/timg.jpg', '2018-04-12 17:10:49', null);
+
+-- ----------------------------
+-- Table structure for partnerinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `partnerinfo`;
+CREATE TABLE `partnerinfo` (
+  `piid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `pid` bigint(20) NOT NULL,
+  `img_url` varchar(200) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`piid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of partnerinfo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for partners
+-- ----------------------------
+DROP TABLE IF EXISTS `partners`;
+CREATE TABLE `partners` (
+  `pid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `cid` bigint(20) NOT NULL COMMENT '公司的唯一标识',
+  `name` varchar(50) DEFAULT NULL,
+  `description` text,
+  `create_time` datetime DEFAULT NULL COMMENT '创建日期',
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of partners
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for project
