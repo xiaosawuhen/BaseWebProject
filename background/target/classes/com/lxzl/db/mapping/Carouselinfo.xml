@@ -3,21 +3,53 @@
 <mapper namespace="com.lxzl.db.dao.CarouselinfoMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Carouselinfo">  
 	</select>
-	<insert id="insert" parameterType="com.lxzl.db.bean.Carouselinfo">
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.CarouselBean">
+		UPDATE carouselinfo
+		   SET link_url = #{linkUlr},
+			   img_url = #{imgUrl},
+		       priority = #{priority},
+		   	   update_time = now()
+		 WHERE caid = #{caid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.CarouselBean">
+		INSERT INTO
+			carouselinfo(
+				caid,
+				img_url,
+				link_url,
+				priority,
+				create_time
+			) VALUES (
+				#{caid},
+				#{imgUrl},
+				#{linkUlr},
+				#{priority},
+				now()
+			)
 	</insert>
 	<insert id="insertBatch" parameterType="list">
 		INSERT INTO
-			USER(
-			name,
-			email
-		)
-		VALUES
+			carouselinfo(
+				caid,
+				img_url,
+				link_url,
+				priority,
+				create_time
+			) VALUES
 		<foreach collection="list" item="item" separator=",">
 			(
-				#{item.name},
-				#{item.email}
+				#{item.caid},
+				#{item.imgUrl},
+				#{item.linkUlr},
+				#{item.priority},
+				now()
 			)
 		</foreach>
 	</insert>
+	<delete id="deleteById">
+		DELETE 
+		  FROM carouselinfo
+		 WHERE caid = #{caid}
+	</delete>
 </mapper>
 

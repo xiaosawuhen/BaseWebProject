@@ -200,30 +200,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                success: function(data) {
               	if(data.statusCode = '20000') {
       		    	var dataList = data.data;
-      		    	// 遍历循环写tbody
-      		    	var tableData = new Array(dataList.length);
-      		    	
-              		$.each(dataList, function(i, item){
-              			var arrary = new Array(7);
-              			arrary[0] = (i);
-              			arrary[1] = ((dataList[i].pid!=null)?dataList[i].pid:"");
+      		    	if(dataList.length > 0) {
+          		    	// 遍历循环写tbody
+          		    	var tableData = new Array(dataList.length);
+          		    	
+                  		$.each(dataList, function(i, item){
+                  			var arrary = new Array(7);
+                  			arrary[0] = (i);
+                  			arrary[1] = ((dataList[i].pid!=null)?dataList[i].pid:"");
 
-              			var name = ((dataList[i].name!=null)?dataList[i].name:"");
-		    			var nameHtml = "<span ";
-		    			nameHtml += "pid='"+dataList[i].pid+"' >";
-		    			nameHtml += "<a class=\"partner-name\" href='javascript:void(0);' onclick='detailIfno(this)'";
-		    			nameHtml += ">"+name+"</a></span>";
-		    			
-              			arrary[2] = nameHtml;
-              			arrary[5] = ((dataList[i].description!=null)?dataList[i].description:"");
-              			tableData[i] = arrary;
-              		});
-              		employeeTable = $("#partnerTable").dataTable();   
-           	        oSettings = employeeTable.fnSettings(); 
-          	        employeeTable.fnClearTable(this);
-          	        employeeTable.fnAddData(tableData);
-          	        oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();  
-          	        employeeTable.fnDraw(); 
+                  			var name = ((dataList[i].name!=null)?dataList[i].name:"");
+    		    			var nameHtml = "<span ";
+    		    			nameHtml += "pid='"+dataList[i].pid+"' >";
+    		    			nameHtml += "<a class=\"partner-name\" href='javascript:void(0);' onclick='detailIfno(this)'";
+    		    			nameHtml += ">"+name+"</a></span>";
+    		    			
+                  			arrary[2] = nameHtml;
+                  			arrary[3] = ((dataList[i].description!=null)?dataList[i].description:"");
+                  			tableData[i] = arrary;
+                  		});
+                  		employeeTable = $("#partnerTable").dataTable();   
+               	        oSettings = employeeTable.fnSettings(); 
+              	        employeeTable.fnClearTable(this);
+              	        employeeTable.fnAddData(tableData);
+              	        oSettings.aiDisplay = oSettings.aiDisplayMaster.slice();  
+              	        employeeTable.fnDraw();
+      		    	} 
               	}
                },
                error: function(XMLHttpRequest, textStatus, errorThrown) {

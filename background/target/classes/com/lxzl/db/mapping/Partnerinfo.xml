@@ -3,21 +3,43 @@
 <mapper namespace="com.lxzl.db.dao.PartnerinfoMapper" >
 	<select id="select" parameterType="map" resultType="com.lxzl.db.bean.Partnerinfo">  
 	</select>
-	<insert id="insert" parameterType="com.lxzl.db.bean.Partnerinfo">
+	<update id="updateById" parameterType="com.lxzl.db.transfor.bean.PartnerBean">
+		UPDATE partnerinfo
+		   SET img_url = #{imgUrl},
+		   	   update_time = now()
+		 WHERE pid = #{pid}
+	</update>
+	<insert id="insert" parameterType="com.lxzl.db.transfor.bean.PartnerBean">
+		INSERT INTO
+			partnerinfo(
+				pid,
+				img_url,
+				create_time
+			) VALUES (
+				#{pid},
+				#{imgUrl},
+				now()
+			)
 	</insert>
 	<insert id="insertBatch" parameterType="list">
 		INSERT INTO
-			USER(
-			name,
-			email
-		)
-		VALUES
+			partnerinfo(
+				start_time,
+				end_time,
+				create_time
+			) VALUES
 		<foreach collection="list" item="item" separator=",">
 			(
-				#{item.name},
-				#{item.email}
+				#{item.startTime},
+				#{item.endTime},
+				now()
 			)
 		</foreach>
 	</insert>
+	<delete id="deleteById">
+		DELETE 
+		  FROM partnerinfo
+		 WHERE pid = #{pid}
+	</delete>
 </mapper>
 

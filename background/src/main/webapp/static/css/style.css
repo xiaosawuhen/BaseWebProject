@@ -258,7 +258,7 @@ table tr th { color: #688a7e;}
 /*sidebar navigation*/
 
 #sidebar {
-    width: 180px;
+    width: 195px;
     height: 100%;
     position: fixed;
     background: #394a59;
@@ -488,7 +488,7 @@ ul.sidebar-menu li.active a i {
 /*main content*/
 
 #main-content {
-    margin-left: 180px;
+    margin-left: 195px;
 }
 
 .header, .footer {
@@ -1810,7 +1810,7 @@ div[data-role="editor-toolbar"] {
 }
 
 .sidebar-closed #sidebar {
-    margin-left: -180px;
+    margin-left: -195px;
 }
 
 /*state overview*/

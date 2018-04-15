@@ -60,6 +60,20 @@
 	display: block;
 }
 
+.imageUploadArea .user-image-partner {
+	width:200px;
+	height:200px;
+	margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 20px;
+    margin-left: auto;
+	cursor: pointer;
+}
+
+.imageUploadArea .user-image-partner ~label {
+	display: block;
+}
+
 .imageUploadArea .user-image-input {
 	display: none;
 }
